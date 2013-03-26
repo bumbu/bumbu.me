@@ -1,0 +1,15 @@
+# Generic
+node_modules
+.tmp
+.DS_Store
+.htaccess
+
+# Ignore wordpress except bumbu theme
+/app/*
+!/app/wp-content
+/app/wp-content/*
+!/app/wp-content/themes
+/app/wp-content/themes/*
+!/app/wp-content/themes/bumbu
+/app/wp-content/themes/bumbu/js/application.js
+/app/wp-content/themes/bumbu/css/application.css

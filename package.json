@@ -1,0 +1,20 @@
+{
+  "name": "bumbu-me",
+  "version": "1.0.0",
+  "description": "Alex Bumbu personal web page",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bumbu/bumbu.me"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "chalk": "^1.0.0",
+    "coffee-script": "^1.9.3",
+    "gulp": "^3.9.0",
+    "gulp-coffee": "^2.3.1",
+    "gulp-less": "^3.0.3"
+  },
+  "scripts": {
+    "build": "gulp build"
+  }
+}
