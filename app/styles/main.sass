@@ -1,6 +1,41 @@
-body
+html, body
   background: #fafafa
+  min-height: 400px
+  height: 100%
+  font-family: Arial, sans-serief
 
-.hero-unit
-  margin: 50px auto 0 auto
-  width: 300px
+.panels
+  height: 100%
+
+  .panel-main
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    border-right: 1px solid #000
+    width: 40px
+    overflow: hidden
+    transition: all 1s
+
+    &:hover
+      width: 200px
+
+    .menu
+      display: block
+      padding: 0
+      position: absolute
+      top: 50%
+      margin: -80px 0 0
+
+      li
+        display: block
+        line-height: 40px
+        padding: 0 0 0 40px
+
+        &.active
+          background: #bbb
+
+        a
+          color: black
+          text-decoration: none
+          padding: 0 10px
