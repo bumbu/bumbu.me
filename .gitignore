@@ -1,0 +1,3 @@
+app/wp-config.php
+app/wp-content/uploads/*
+node_modules
