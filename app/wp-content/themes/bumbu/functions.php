@@ -126,8 +126,6 @@ add_action( 'widgets_init', 'bumbu_widgets_init' );
 function bumbu_scripts() {
 	wp_enqueue_style( 'bumbu-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'bumbu-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20120206', true );
-
 	wp_enqueue_script( 'bumbu-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20130115', true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -144,3 +142,8 @@ add_action( 'wp_enqueue_scripts', 'bumbu_scripts' );
  * Implement the Custom Header feature
  */
 //require( get_template_directory() . '/inc/custom-header.php' );
+
+function my_function_admin_bar(){
+	return false;
+}
+add_filter( 'show_admin_bar' , 'my_function_admin_bar');
