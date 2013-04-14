@@ -27,17 +27,20 @@ html, body{
   padding: 0;
 }
 
+@panel_main_width_open: 216px;
+@panel_main_width_closed: 43px;
+@panel_first_width: 247px;
+
 .panels{
   height: 100%;
   float: left;
-
-  @panel_main_width_open: 216px;
-  @panel_main_width_closed: 43px;
+  width: @panel_main_width_closed + @panel_first_width;
+  margin: 0 0 0 0-100%;
 
   .panel-main{
     @link_height: 44px;
 
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
@@ -135,12 +138,10 @@ html, body{
 
     }
 
-	}
-
-	@panel_first_width: 247px;
+	}	
   
   .panel-first{
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     z-index: 2;
@@ -183,5 +184,11 @@ html, body{
 }
 
 .body-container{
-  margin: 0 0 0 237px;	
+  // margin: 0 0 0 @panel_main_width_closed + @panel_first_width + 1;
+  float: left;
+  width: 100%;
+}
+
+#main{
+	margin: 0 0 0 @panel_main_width_closed + @panel_first_width + 1;
 }

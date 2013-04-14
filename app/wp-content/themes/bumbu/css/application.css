@@ -85,9 +85,11 @@ body {
 .panels {
   height: 100%;
   float: left;
+  width: 290px;
+  margin: 0 0 0 -100%;
 }
 .panels .panel-main {
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
@@ -183,7 +185,7 @@ body {
   background-position: -3px -196px;
 }
 .panels .panel-first {
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   z-index: 2;
@@ -216,5 +218,9 @@ body {
   font-size: 14px;
 }
 .body-container {
-  margin: 0 0 0 237px;
+  float: left;
+  width: 100%;
+}
+#main {
+  margin: 0 0 0 291px;
 }
