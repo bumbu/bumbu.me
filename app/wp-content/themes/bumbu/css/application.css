@@ -217,10 +217,20 @@ body {
 .panels .panel-first .item .content {
   font-size: 14px;
 }
-.body-container {
+#main {
   float: left;
   width: 100%;
 }
-#primary {
+#main #primary {
   margin: 0 0 0 291px;
+}
+#content {
+  margin: 23px;
+}
+#content .post h1.post-title {
+  font-size: 29.939999999999998px;
+  line-height: 35.94px;
+}
+#content .post .prettyprint {
+  font-size: 14px;
 }
