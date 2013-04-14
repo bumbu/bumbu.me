@@ -1,3 +1,9 @@
+# Wordpress
 app/wp-config.php
 app/wp-content/uploads/*
+
+# Node packages
 node_modules
+
+# Coffee map
+*.map
