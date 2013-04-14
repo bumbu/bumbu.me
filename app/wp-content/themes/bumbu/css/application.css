@@ -77,7 +77,8 @@ body {
   min-height: 400px;
   height: 100%;
   font-family: 'ProximaNovaLight', Verdana, Geneva, Arial, sans-serief;
-  font-size: 16px;
+  font-size: 14px;
+  line-height: 20px;
   margin: 0;
   padding: 0;
 }
@@ -91,7 +92,7 @@ body {
   bottom: 0;
   left: 0;
   z-index: 3;
-  border-right: 1px solid #000;
+  border-right: 1px solid #9f9f9f;
   background: #fff;
   width: 43px;
   overflow: hidden;
@@ -187,22 +188,32 @@ body {
   bottom: 0;
   z-index: 2;
   left: 44px;
-  width: 200px;
-  border-right: 1px solid #000;
+  width: 247px;
+  border-right: 1px solid #9f9f9f;
   overflow: auto;
 }
 .panels .panel-first .item {
   padding: 14px;
+  cursor: pointer;
 }
 .panels .panel-first .item.searchbar {
   height: 43px;
   padding: 0;
 }
-.panels .panel-first .item.active {
-  background: #ccc;
+.panels .panel-first .item.active,
+.panels .panel-first .item.active:hover {
+  background: #e2e2e2;
+  cursor: default;
 }
-.panels .panel-first .item .title .content {
-  font-size: 12px;
+.panels .panel-first .item:hover {
+  background: #eeeeee;
+}
+.panels .panel-first .item .title {
+  font-size: 20.939999999999998px;
+  line-height: 26.939999999999998px;
+}
+.panels .panel-first .item .content {
+  font-size: 14px;
 }
 .body-container {
   margin: 0 0 0 237px;

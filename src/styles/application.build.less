@@ -21,7 +21,8 @@ html, body{
   min-height: 400px;
   height: 100%;
   font-family: 'ProximaNovaLight', Verdana, Geneva, Arial, sans-serief;
-  font-size: 16px;
+  font-size: @baseFontSize;
+  line-height: @baseLineHeight;
   margin: 0;
   padding: 0;
 }
@@ -41,7 +42,7 @@ html, body{
     bottom: 0;
     left: 0;
     z-index: 3;
-    border-right: 1px solid #000;
+    border-right: 1px solid @gray;
     background: #fff;
     width: @panel_main_width_closed;
     overflow: hidden;
@@ -135,6 +136,8 @@ html, body{
     }
 
 	}
+
+	@panel_first_width: 247px;
   
   .panel-first{
     position: absolute;
@@ -142,25 +145,35 @@ html, body{
     bottom: 0;
     z-index: 2;
     left: @panel_main_width_closed + 1;
-    width: 200px;
-    border-right: 1px solid #000;
+    width: @panel_first_width;
+    border-right: 1px solid @gray;
     overflow: auto;
 
     .item{
       padding: 14px;
+      cursor: pointer;
 
       &.searchbar{
         height: @panel_main_width_closed;
         padding: 0;
       }
 
-      &.active{
-        background: #ccc;
+      &.active, &.active:hover{
+        background: @grayLight;
+        cursor: default;
       }
 
-      .title
+      &:hover{
+				background: @grayLighter;
+      }
+
+      .title{
+				font-size: @fontSizeHuge - 3px;
+				line-height: @fontSizeHuge + 3px;
+      }
+
       .content{
-        font-size: 12px;
+        font-size: @baseFontSize;
       }
 
     }
