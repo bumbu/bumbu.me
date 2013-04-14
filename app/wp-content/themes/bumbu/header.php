@@ -19,12 +19,13 @@
 <![endif]-->
 
 <?php wp_head(); ?>
+<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_url' ); ?>/css/font.css" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_url' ); ?>/css/application.css" />
 </head>
 
 <body <?php body_class(); ?>>
 	<div class="panels">
-		<div class="panel-main">
+		<div class="panel-main open">
 			<a href="#" class="logo">Logo</a>
 			<ul class="menu">
 				<li class="active"><a href="#">Blog</a></li>

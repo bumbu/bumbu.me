@@ -30,8 +30,8 @@ body {
   background: #fafafa;
   min-height: 400px;
   height: 100%;
-  font-family: Arial, sans-serief;
-  font-size: 12px;
+  font-family: 'ProximaNovaLight', Verdana, Geneva, Arial, sans-serief;
+  font-size: 16px;
   margin: 0;
   padding: 0;
 }
@@ -51,7 +51,8 @@ body {
   overflow: hidden;
   transition: all 1s;
 }
-.panels .panel-main:hover {
+.panels .panel-main:hover,
+.panels .panel-main.open {
   width: 170px;
 }
 .panels .panel-main .logo {
