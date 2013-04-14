@@ -20,32 +20,22 @@
 		</div>
 		<div class="panel-first">
 			<?php if ( ! dynamic_sidebar( 'sidebar-panel-first' ) ) : ?>
-				<!-- Hey, sidebar is not defined -->
+				<div class="item searchbar"></div>
+				<?php 
+				$_posts = wp_get_recent_posts(array(
+					'numberposts' => 50
+				,	'category' => 4 // Blog category
+				,	'post_status' => 'publish'
+				));
+				foreach ($_posts as $key => $_post) {
+					?>
+					<div class="item <?php echo $_post['ID'] == get_the_ID() ? 'active' : '';?>">
+						<div class="title"><?php echo $_post['post_title']; ?></div>
+						<div class="content"><?php echo $_post['post_excerpt']; ?></div>
+					</div>
+					<?php
+				}
+				?>
 			<?php endif; // end sidebar widget area ?>
-			<div class="item searchbar"></div>
-			<div class="item active">
-				<div class="title">Awesome post title</div>
-				<div class="content">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa.</div>
-			</div>
-			<div class="item">
-				<div class="title">Awesome post title</div>
-				<div class="content">Lorem dolor sit amet, conuer adipiscing elit. Aenean commodo dolor. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. </div>
-			</div>
-			<div class="item">
-				<div class="title">Awesome post title</div>
-				<div class="content">Lorem dolor sit amet, conuer adipiscing elit. Aenean commodo dolor. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. </div>
-			</div>
-			<div class="item">
-				<div class="title">Awesome post title</div>
-				<div class="content">Lorem dolor sit amet, conuer adipiscing elit. Aenean commodo dolor. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. </div>
-			</div>
-			<div class="item">
-				<div class="title">Awesome post title</div>
-				<div class="content">Lorem dolor sit amet, conuer adipiscing elit. Aenean commodo dolor. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. </div>
-			</div>
-			<div class="item">
-				<div class="title">Awesome post title</div>
-				<div class="content">Lorem dolor sit amet, conuer adipiscing elit. Aenean commodo dolor. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. </div>
-			</div>
 		</div>
 	</div>
