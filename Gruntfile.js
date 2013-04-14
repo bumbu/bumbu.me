@@ -76,6 +76,9 @@ module.exports = function(grunt) {
           ext: '.css'
         }]
       }
+    },
+    clean: {
+      production: 'app/wp-content/themes/bumbu/js/{,*/}*.map'
     }
   });
 
@@ -83,6 +86,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-clean');
 
   // Tasks definitions
   grunt.registerTask('watchWithLiveReload', [
@@ -101,7 +105,8 @@ module.exports = function(grunt) {
 
   grunt.registerTask('build', [
     'coffee:production',
-    'less:production'
+    'less:production',
+    'clean:production'
   ]);
 
   grunt.registerTask('default', [
