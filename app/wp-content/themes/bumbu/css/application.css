@@ -207,12 +207,21 @@ body {
   background: #e2e2e2;
   cursor: default;
 }
+.panels .panel-first .item.active .title,
+.panels .panel-first .item.active:hover .title {
+  color: #222222;
+}
 .panels .panel-first .item:hover {
   background: #eeeeee;
+}
+.panels .panel-first .item:hover .title {
+  color: #333333;
 }
 .panels .panel-first .item .title {
   font-size: 20.939999999999998px;
   line-height: 26.939999999999998px;
+  color: #9f9f9f;
+  text-decoration: none;
 }
 .panels .panel-first .item .content {
   font-size: 14px;

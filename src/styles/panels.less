@@ -133,15 +133,27 @@
       &.active, &.active:hover{
         background: @grayLight;
         cursor: default;
+
+        .title{
+          color: @grayDarker;
+        }
+
       }
 
       &:hover{
         background: @grayLighter;
+
+        .title{
+          color: @grayDark;
+        }
+
       }
 
       .title{
         font-size: @fontSizeHuge - 3px;
         line-height: @fontSizeHuge + 3px;
+        color: @gray;
+        text-decoration: none;
       }
 
       .content{
