@@ -14,14 +14,17 @@ module.exports = function(grunt) {
         files: ['src/styles/*.build.less'],
         tasks: ['less:development']
       },
-      livereload: {
+      development: {
+        options: {
+          nospawn: true
+        },
         files: [
           'app/wp-content/themes/bumbu/{,*/}*.php',
           'app/wp-content/themes/bumbu/{,*/}*.css',
           'app/wp-content/themes/bumbu/{,*/}*.js',
           'app/wp-content/themes/bumbu/{,*/}*.{png,jpg,jpeg,webp}'
         ],
-        tasks: ['livereload']
+        tasks: []
       }
     },
     coffee: {
@@ -76,22 +79,21 @@ module.exports = function(grunt) {
     }
   });
 
-  // https://github.com/yeoman/yeoman/issues/250#issuecomment-8024212
-  // https://github.com/gruntjs/grunt-contrib-connect
-  // https://github.com/romainberger/yeoman-wordpress/blob/master/app/templates/Gruntfile.js
-  // https://github.com/gruntjs/grunt-contrib-livereload/pull/32
-
   grunt.loadNpmTasks('grunt-contrib-livereload');
   grunt.loadNpmTasks('grunt-contrib-coffee');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Tasks definitions
-  grunt.registerTask('server', [
+  grunt.registerTask('watchWithLiveReload', [
     'livereload-start',
+    'watch'
+  ]);
+
+  grunt.registerTask('server', [
     'coffee:development',
     'less:development',
-    'watch'
+    'watchWithLiveReload'
   ]);
 
   grunt.registerTask('test', [
