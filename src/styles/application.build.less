@@ -1,6 +1,115 @@
 @import "bootstrap/variables.less"; 
 @import "bootstrap/mixins.less";
 
-body{
-  color: red;
+html, body{
+  background: #fafafa;
+  min-height: 400px;
+  height: 100%;
+  font-family: Arial, sans-serief;
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+}
+
+.panels{
+  height: 100%;
+  float: left;
+
+  @panel_width_open: 170px;
+  @panel_width_closed: 36px;
+
+  .panel-main{
+    @link_height: @panel_width_closed;
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 3;
+    border-right: 1px solid #000;
+    background: #fff;
+    width: @panel_width_closed;
+    overflow: hidden;
+    transition: all 1s;
+
+    &:hover{
+    	width: @panel_width_open;
+    }
+
+    .logo{
+      display: block;
+      position: absolute;
+      height: @link_height;
+      width: @panel_width_open;
+      background: #ccc;
+		}
+
+    .menu{
+      display: block;
+      padding: 0;
+      position: absolute;
+      top: 50%;
+      margin: -@link_height*2 0 0;
+
+      li{
+        display: block;
+        line-height: @link_height;
+        padding: 0 0 0 @panel_width_closed;
+        width: @panel_width_open - @panel_width_closed;
+
+        &.active, &.active:hover{
+          background: #bbb;
+        }
+
+        &:hover{
+          background: #eee;
+        }
+
+        a{
+          color: black;
+          text-decoration: none;
+          padding: 0 10px;
+        }
+
+      }
+
+    }
+
+	}
+  
+  .panel-first{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    left: @panel_width_closed + 1;
+    width: 200px;
+    border-right: 1px solid #000;
+    overflow: auto;
+
+    .item{
+      padding: 14px;
+
+      &.searchbar{
+        height: @panel_width_closed;
+        padding: 0;
+      }
+
+      &.active{
+        background: #ccc;
+      }
+
+      .title
+      .content{
+        font-size: 12px;
+      }
+
+    }
+
+  }
+
+}
+
+.body-container{
+  margin: 0 0 0 237px;	
 }
