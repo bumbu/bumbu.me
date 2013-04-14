@@ -12,7 +12,6 @@
  */
 
 get_header(); ?>
-
 	<div id="primary" class="content-area">
 		<div id="content" class="site-content" role="main">
 
@@ -29,9 +28,7 @@ get_header(); ?>
 					get_template_part( 'content', get_post_format() );
 				?>
 
-			<?php endwhile; ?>
-
-			<?php bumbu_content_nav( 'nav-below' ); ?>
+			<?php break;endwhile; ?>
 
 		<?php else : ?>
 
@@ -42,5 +39,4 @@ get_header(); ?>
 		</div><!-- #content -->
 	</div><!-- #primary -->
 
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

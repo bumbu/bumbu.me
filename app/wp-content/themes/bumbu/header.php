@@ -24,6 +24,6 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="body-container hfeed site">
+<?php get_sidebar('panel'); ?>
+<div id="main" class="body-container hfeed site">
 	<?php do_action( 'before' ); ?>
-	<div id="main" class="site-main">

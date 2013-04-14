@@ -110,10 +110,19 @@ add_action( 'after_setup_theme', 'bumbu_register_custom_background' );
  */
 function bumbu_widgets_init() {
 	register_sidebar( array(
-		'name'          => __( 'Sidebar', 'bumbu' ),
-		'id'            => 'sidebar-1',
-		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</aside>',
+		'name'          => __( 'Panel main', 'bumbu' ),
+		'id'            => 'sidebar-panel-main',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+		'before_title'  => '<h1 class="widget-title">',
+		'after_title'   => '</h1>',
+	) );
+
+	register_sidebar( array(
+		'name'          => __( 'Panel first', 'bumbu' ),
+		'id'            => 'sidebar-panel-first',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
 		'before_title'  => '<h1 class="widget-title">',
 		'after_title'   => '</h1>',
 	) );
