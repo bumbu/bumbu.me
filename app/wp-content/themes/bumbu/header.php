@@ -25,13 +25,13 @@
 
 <body <?php body_class(); ?>>
 	<div class="panels">
-		<div class="panel-main open">
-			<a href="#" class="logo">Logo</a>
+		<div class="panel-main open_">
+			<a href="#" class="logo"><i class="icon icon-bumbu-logo"></i><div class="logo-image"><img src="<?php bloginfo( 'template_url' ); ?>/img/logo-bumbu-text.png" alt="bumbu logo" width="116" height="24"></div></a>
 			<ul class="menu">
-				<li class="active"><a href="#">Blog</a></li>
-				<li><a href="#">About</a></li>
-				<li><a href="#">Catalog</a></li>
-				<li><a href="#">Experiments</a></li>
+				<li class="active"><a class="icon icon-blog" href="#">Blog</a></li>
+				<li><a class="icon icon-about" href="#">About</a></li>
+				<li><a class="icon icon-catalog" href="#">Catalog</a></li>
+				<li><a class="icon icon-experiments" href="#">Experiments</a></li>
 			</ul>
 		</div>
 		<div class="panel-first">

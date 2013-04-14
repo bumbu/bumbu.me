@@ -11,7 +11,8 @@ module.exports = function(grunt) {
         tasks: ['coffee:production']
       },
       less: {
-        files: ['src/styles/*.build.less'],
+        // files: ['src/styles/*.build.less'],
+        files: ['src/styles/{,*/}*.less'],
         tasks: ['less:development']
       },
       development: {

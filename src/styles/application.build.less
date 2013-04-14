@@ -1,5 +1,20 @@
-@import "bootstrap/variables.less"; 
+@import "bootstrap/variables.less";
+	@import "override/variables.less";
 @import "bootstrap/mixins.less";
+	@import "override/mixins.less";
+
+@import "bootstrap/utilities.less";
+	@import "override/utilities.less";
+
+@import "override/icons.less";
+
+a{
+  cursor: pointer;
+  color: @linkColor;
+  &:hover{
+    color: @linkColorHover;
+  }
+}
 
 html, body{
   background: #fafafa;
@@ -15,11 +30,11 @@ html, body{
   height: 100%;
   float: left;
 
-  @panel_width_open: 170px;
-  @panel_width_closed: 36px;
+  @panel_main_width_open: 216px;
+  @panel_main_width_closed: 43px;
 
   .panel-main{
-    @link_height: @panel_width_closed;
+    @link_height: 44px;
 
     position: absolute;
     top: 0;
@@ -28,20 +43,41 @@ html, body{
     z-index: 3;
     border-right: 1px solid #000;
     background: #fff;
-    width: @panel_width_closed;
+    width: @panel_main_width_closed;
     overflow: hidden;
-    transition: all 1s;
+    .transition(all 0.7s);
 
     &:hover, &.open{
-    	width: @panel_width_open;
+    	width: @panel_main_width_open;
+
+    	.logo{
+    		.rotateAndTranslate(0, 0, 0);
+    	}
     }
 
     .logo{
       display: block;
       position: absolute;
       height: @link_height;
-      width: @panel_width_open;
-      background: #ccc;
+      width: @panel_main_width_open - 9;
+      top: 7px;
+      left: 7px;
+      .transition(all 0.7s);
+      .rotateAndTranslate(90deg, 82px, 98px);
+
+      &:hover{
+      }
+
+      i.icon{
+      	vertical-align: top;
+      	margin: 0px 7px 0 0;
+      }
+
+      .logo-image{
+      	display: inline-block;
+				margin: 1px 0 0;
+      }
+
 		}
 
     .menu{
@@ -54,21 +90,44 @@ html, body{
       li{
         display: block;
         line-height: @link_height;
-        padding: 0 0 0 @panel_width_closed;
-        width: @panel_width_open - @panel_width_closed;
+        padding: 0 0 0 0;
+        width: @panel_main_width_open;
 
         &.active, &.active:hover{
-          background: #bbb;
+          background: @grayLight;
         }
 
         &:hover{
-          background: #eee;
+          background: @grayLighter;
         }
 
         a{
-          color: black;
+          color: @gray;
           text-decoration: none;
-          padding: 0 10px;
+          padding: 0 10px 0 @panel_main_width_closed;
+          text-transform: uppercase;
+          font-size: 24px;
+          line-height: @link_height -2;
+          vertical-align: -4px;
+
+          &.icon{
+          	background: url(../img/icons.png) no-repeat;
+
+						&.icon-blog{
+							background-position: -3px -51px;
+						}
+						&.icon-about{
+							background-position: -3px -99px;
+						}
+						&.icon-catalog{
+							background-position: -3px -146px;
+						}
+						&.icon-experiments{
+							background-position: -3px -196px;
+						}
+
+          }
+
         }
 
       }
@@ -82,7 +141,7 @@ html, body{
     top: 0;
     bottom: 0;
     z-index: 2;
-    left: @panel_width_closed + 1;
+    left: @panel_main_width_closed + 1;
     width: 200px;
     border-right: 1px solid #000;
     overflow: auto;
@@ -91,7 +150,7 @@ html, body{
       padding: 14px;
 
       &.searchbar{
-        height: @panel_width_closed;
+        height: @panel_main_width_closed;
         padding: 0;
       }
 

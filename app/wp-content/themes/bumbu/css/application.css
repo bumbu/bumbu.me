@@ -25,6 +25,52 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+.pull-right {
+  float: right;
+}
+.pull-left {
+  float: left;
+}
+.hide {
+  display: none;
+}
+.show {
+  display: block;
+}
+.invisible {
+  visibility: hidden;
+}
+.affix {
+  position: fixed;
+}
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+::-webkit-scrollbar-track {
+  background: #e8e8e8;
+  -webkit-box-shadow: inset 1px 1px 0 #c7c7c7, inset -1px -1px 0 #d8d8d8;
+}
+::-webkit-scrollbar-thumb {
+  background: #747474;
+  -webkit-box-shadow: inset 1px 1px 3px #4d4d4d, inset -1px -1px 0 #686868;
+}
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+.icon.icon-bumbu-logo {
+  background: url('../img/icons.png') -11px -11px no-repeat;
+  width: 26px;
+  height: 26px;
+}
+a {
+  cursor: pointer;
+  color: #0088cc;
+}
+a:hover {
+  color: #005580;
+}
 html,
 body {
   background: #fafafa;
@@ -47,52 +93,100 @@ body {
   z-index: 3;
   border-right: 1px solid #000;
   background: #fff;
-  width: 36px;
+  width: 43px;
   overflow: hidden;
-  transition: all 1s;
+  -webkit-transition: all 0.7s;
+  -moz-transition: all 0.7s;
+  -o-transition: all 0.7s;
+  transition: all 0.7s;
 }
 .panels .panel-main:hover,
 .panels .panel-main.open {
-  width: 170px;
+  width: 216px;
+}
+.panels .panel-main:hover .logo,
+.panels .panel-main.open .logo {
+  -webkit-transform: rotate(0) translate(0, 0);
+  -moz-transform: rotate(0) translate(0, 0);
+  -ms-transform: rotate(0) translate(0, 0);
+  -o-transform: rotate(0) translate(0, 0);
+  transform: rotate(0) translate(0, 0);
 }
 .panels .panel-main .logo {
   display: block;
   position: absolute;
-  height: 36px;
-  width: 170px;
-  background: #ccc;
+  height: 44px;
+  width: 207px;
+  top: 7px;
+  left: 7px;
+  -webkit-transition: all 0.7s;
+  -moz-transition: all 0.7s;
+  -o-transition: all 0.7s;
+  transition: all 0.7s;
+  -webkit-transform: rotate(90deg) translate(82px, 98px);
+  -moz-transform: rotate(90deg) translate(82px, 98px);
+  -ms-transform: rotate(90deg) translate(82px, 98px);
+  -o-transform: rotate(90deg) translate(82px, 98px);
+  transform: rotate(90deg) translate(82px, 98px);
+}
+.panels .panel-main .logo i.icon {
+  vertical-align: top;
+  margin: 0px 7px 0 0;
+}
+.panels .panel-main .logo .logo-image {
+  display: inline-block;
+  margin: 1px 0 0;
 }
 .panels .panel-main .menu {
   display: block;
   padding: 0;
   position: absolute;
   top: 50%;
-  margin: -72px 0 0;
+  margin: -88px 0 0;
 }
 .panels .panel-main .menu li {
   display: block;
-  line-height: 36px;
-  padding: 0 0 0 36px;
-  width: 134px;
+  line-height: 44px;
+  padding: 0 0 0 0;
+  width: 216px;
 }
 .panels .panel-main .menu li.active,
 .panels .panel-main .menu li.active:hover {
-  background: #bbb;
+  background: #e2e2e2;
 }
 .panels .panel-main .menu li:hover {
-  background: #eee;
+  background: #eeeeee;
 }
 .panels .panel-main .menu li a {
-  color: black;
+  color: #9f9f9f;
   text-decoration: none;
-  padding: 0 10px;
+  padding: 0 10px 0 43px;
+  text-transform: uppercase;
+  font-size: 24px;
+  line-height: 44px -2;
+  vertical-align: -4px;
+}
+.panels .panel-main .menu li a.icon {
+  background: url(../img/icons.png) no-repeat;
+}
+.panels .panel-main .menu li a.icon.icon-blog {
+  background-position: -3px -51px;
+}
+.panels .panel-main .menu li a.icon.icon-about {
+  background-position: -3px -99px;
+}
+.panels .panel-main .menu li a.icon.icon-catalog {
+  background-position: -3px -146px;
+}
+.panels .panel-main .menu li a.icon.icon-experiments {
+  background-position: -3px -196px;
 }
 .panels .panel-first {
   position: absolute;
   top: 0;
   bottom: 0;
   z-index: 2;
-  left: 37px;
+  left: 44px;
   width: 200px;
   border-right: 1px solid #000;
   overflow: auto;
@@ -101,7 +195,7 @@ body {
   padding: 14px;
 }
 .panels .panel-first .item.searchbar {
-  height: 36px;
+  height: 43px;
   padding: 0;
 }
 .panels .panel-first .item.active {
