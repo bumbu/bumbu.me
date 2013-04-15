@@ -230,20 +230,37 @@ body {
   float: left;
   width: 100%;
 }
-#main #primary {
-  margin: 0 0 0 291px;
+#main #content {
+  margin: 23px 23px 23px 314px;
+  width: auto;
+  max-width: 730px;
 }
-#content {
-  margin: 23px;
-}
-#content .post h1.post-title {
+#main #content .post h1.post-title {
   font-size: 29.939999999999998px;
   line-height: 35.94px;
 }
-#content .post h1.post-title a {
+#main #content .post h1.post-title a {
   text-decoration: none;
   color: #111111;
 }
-#content .post .prettyprint {
+#main #content .post .prettyprint {
   font-size: 14px;
+}
+@media (min-width: 1200px) {
+  #main #content {
+    width: 730px;
+  }
+}
+@media (min-width: 768px) and (max-width: 979px) {
+  #main #content {
+    width: auto;
+  }
+}
+@media (max-width: 767px) {
+  #main #content {
+    width: auto;
+  }
+}
+@media (max-width: 480px) {
+  
 }

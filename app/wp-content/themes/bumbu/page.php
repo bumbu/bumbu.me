@@ -10,15 +10,13 @@
  * @package bumbu
  */
 get_header(); ?>
-	<div id="primary" class="content-area">
-		<div id="content" class="site-content" role="main">
-		<?php if ( have_posts() ) : ?>
-			<?php while ( have_posts() ) : the_post(); ?>
-				<?php get_template_part( 'content' ); ?>
-			<?php endwhile; ?>
-		<?php else : ?>
-			<?php get_template_part( 'no-results', 'index' ); ?>
-		<?php endif; ?>
-		</div><!-- #content -->
-	</div><!-- #primary -->
+	<div id="content" class="site-content" role="main">
+	<?php if ( have_posts() ) : ?>
+		<?php while ( have_posts() ) : the_post(); ?>
+			<?php get_template_part( 'content' ); ?>
+		<?php endwhile; ?>
+	<?php else : ?>
+		<?php get_template_part( 'no-results', 'index' ); ?>
+	<?php endif; ?>
+	</div><!-- #content -->
 <?php get_footer(); ?>

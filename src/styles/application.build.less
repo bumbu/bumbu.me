@@ -33,36 +33,32 @@ html, body{
   float: left;
   width: 100%;
 
-  #primary{
-    margin: 0 0 0 @panel_main_width_closed + @panel_first_width + 1;
-  }
+  #content{
+    margin: 23px 23px 23px @panel_main_width_closed + @panel_first_width + 1 + 23;
+    width: auto;
+    max-width: 730px;
 
-}
+    .post{
+      
+      h1.post-title{
+        font-size: @fontSizeHuge + 6px;
+        line-height: @fontSizeHuge + 12px;
 
-#content{
-  margin: 23px;
+        a{
+          text-decoration: none;
+          color: @black;
+        }
 
-  .post{
-    
-    h1.post-title{
-      font-size: @fontSizeHuge + 6px;
-      line-height: @fontSizeHuge + 12px;
+      }
 
-      a{
-        text-decoration: none;
-        color: @black;
+      .prettyprint{
+        font-size: @baseFontSize;
       }
 
     }
 
-    .post-content{
-
-    }
-
-    .prettyprint{
-      font-size: @baseFontSize;
-    }
-
   }
 
 }
+
+@import "override/responsive.less";
