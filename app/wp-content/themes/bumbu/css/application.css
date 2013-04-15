@@ -344,6 +344,8 @@ body {
   padding: 0 0 0 0;
   width: 216px;
 }
+.panels .panel-main .menu li.current_page_item,
+.panels .panel-main .menu li.current_page_item:hover,
 .panels .panel-main .menu li.active,
 .panels .panel-main .menu li.active:hover {
   background: #e2e2e2;
