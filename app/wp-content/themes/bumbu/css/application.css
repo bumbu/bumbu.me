@@ -240,6 +240,10 @@ body {
   font-size: 29.939999999999998px;
   line-height: 35.94px;
 }
+#content .post h1.post-title a {
+  text-decoration: none;
+  color: #111111;
+}
 #content .post .prettyprint {
   font-size: 14px;
 }
