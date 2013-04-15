@@ -362,18 +362,19 @@ body {
 }
 .panels .panel-main .menu li a.icon {
   background: url(../img/icons.png) no-repeat;
+  background-position: -3px -5px;
 }
 .panels .panel-main .menu li a.icon.icon-blog {
   background-position: -3px -51px;
 }
 .panels .panel-main .menu li a.icon.icon-about {
-  background-position: -3px -99px;
+  background-position: -3px -196px;
 }
 .panels .panel-main .menu li a.icon.icon-catalog {
   background-position: -3px -146px;
 }
 .panels .panel-main .menu li a.icon.icon-experiments {
-  background-position: -3px -196px;
+  background-position: -3px -99px;
 }
 .panels .panel-first {
   position: fixed;
@@ -457,6 +458,15 @@ body {
 #main #content .page h3 {
   font-weight: normal;
   border-bottom: 1px solid #e2e2e2;
+  padding-top: 10px;
+}
+#main #content .post h1:first-child,
+#main #content .page h1:first-child,
+#main #content .post h2:first-child,
+#main #content .page h2:first-child,
+#main #content .post h3:first-child,
+#main #content .page h3:first-child {
+  padding-top: 0;
 }
 #main #content .post h1,
 #main #content .page h1 {
