@@ -364,7 +364,7 @@ body {
 }
 .panels .panel-main .menu li a.icon {
   background: url(../img/icons.png) no-repeat;
-  background-position: -3px -5px;
+  background-position: -3px -2px;
 }
 .panels .panel-main .menu li a.icon.icon-blog {
   background-position: -3px -51px;
@@ -430,15 +430,19 @@ body {
   max-width: 730px;
 }
 #main #content .post h1.post-title,
-#main #content .page h1.post-title {
+#main #content .page h1.post-title,
+#main #content .post h1.post-title:first-child,
+#main #content .page h1.post-title:first-child {
   font-size: 29.939999999999998px;
   line-height: 35.94px;
-  padding-bottom: 10px;
+  padding: 11px 0 10px;
   font-weight: normal;
   border: 0;
 }
 #main #content .post h1.post-title a,
-#main #content .page h1.post-title a {
+#main #content .page h1.post-title a,
+#main #content .post h1.post-title:first-child a,
+#main #content .page h1.post-title:first-child a {
   text-decoration: none;
   color: #111111;
 }
