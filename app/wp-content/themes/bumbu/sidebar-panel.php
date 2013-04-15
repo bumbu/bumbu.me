@@ -16,7 +16,7 @@
 				$category_active = 0;
 				$category_first = 0;
 				$category_post = 0;
-				$visible_categories = [];
+				$visible_categories = array();
 
 				if ( ( $locations = get_nav_menu_locations() ) && isset( $locations[ $menu_name ] ) ) {
 					$menu = wp_get_nav_menu_object( $locations[ $menu_name ] );
