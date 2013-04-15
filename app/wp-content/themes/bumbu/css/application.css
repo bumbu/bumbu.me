@@ -25,6 +25,204 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+nav,
+section {
+  display: block;
+}
+audio,
+canvas,
+video {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+audio:not([controls]) {
+  display: none;
+}
+html {
+  font-size: 100%;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+a:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+a:hover,
+a:active {
+  outline: 0;
+}
+sub,
+sup {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+sup {
+  top: -0.5em;
+}
+sub {
+  bottom: -0.25em;
+}
+img {
+  /* Responsive images (ensure images don't scale beyond their parents) */
+
+  max-width: 100%;
+  /* Part 1: Set a maxium relative to the parent */
+
+  width: auto\9;
+  /* IE7-8 need help adjusting responsive images */
+
+  height: auto;
+  /* Part 2: Scale the height according to the width, otherwise you get stretching */
+
+  vertical-align: middle;
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+}
+#map_canvas img,
+.google-maps img {
+  max-width: none;
+}
+button,
+input,
+select,
+textarea {
+  margin: 0;
+  font-size: 100%;
+  vertical-align: middle;
+}
+button,
+input {
+  *overflow: visible;
+  line-height: normal;
+}
+button::-moz-focus-inner,
+input::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+label,
+select,
+button,
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+input[type="radio"],
+input[type="checkbox"] {
+  cursor: pointer;
+}
+input[type="search"] {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  -webkit-appearance: textfield;
+}
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+textarea {
+  overflow: auto;
+  vertical-align: top;
+}
+@media print {
+  * {
+    text-shadow: none !important;
+    color: #000 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+  .ir a:after,
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+  thead {
+    display: table-header-group;
+  }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+  img {
+    max-width: 100% !important;
+  }
+  @page  {
+    margin: 0.5cm;
+  }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
+a {
+  cursor: pointer;
+  color: #0088cc;
+}
+a:hover {
+  color: #005580;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.4;
+  margin: 0.2em 0;
+  padding: 0;
+}
+p {
+  margin: 0.2em 0;
+  padding: 0;
+}
+pre {
+  margin: 10px 0;
+}
+ul,
+ol {
+  padding: 0;
+  margin: 0;
+}
 .pull-right {
   float: right;
 }
@@ -64,21 +262,14 @@
   width: 26px;
   height: 26px;
 }
-a {
-  cursor: pointer;
-  color: #0088cc;
-}
-a:hover {
-  color: #005580;
-}
 html,
 body {
   background: #fafafa;
   min-height: 400px;
   height: 100%;
   font-family: 'ProximaNovaLight', Verdana, Geneva, Arial, sans-serief;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 16px;
+  line-height: 22px;
   margin: 0;
   padding: 0;
 }
@@ -235,16 +426,65 @@ body {
   width: auto;
   max-width: 730px;
 }
-#main #content .post h1.post-title {
+#main #content .post h1.post-title,
+#main #content .page h1.post-title {
   font-size: 29.939999999999998px;
   line-height: 35.94px;
+  padding-bottom: 10px;
+  font-weight: normal;
+  border: 0;
 }
-#main #content .post h1.post-title a {
+#main #content .post h1.post-title a,
+#main #content .page h1.post-title a {
   text-decoration: none;
   color: #111111;
 }
-#main #content .post .prettyprint {
+#main #content .post p,
+#main #content .page p {
+  margin: 0.4em 0;
+}
+#main #content .post ol,
+#main #content .page ol,
+#main #content .post ul,
+#main #content .page ul {
+  padding-left: 33px;
+}
+#main #content .post h1,
+#main #content .page h1,
+#main #content .post h2,
+#main #content .page h2,
+#main #content .post h3,
+#main #content .page h3 {
+  font-weight: normal;
+  border-bottom: 1px solid #e2e2e2;
+}
+#main #content .post h1,
+#main #content .page h1 {
+  font-size: 23.939999999999998px;
+}
+#main #content .post h2,
+#main #content .page h2 {
+  font-size: 19.5px;
+}
+#main #content .post h3,
+#main #content .page h3 {
+  font-size: 16px;
+}
+#main #content .post blockquote,
+#main #content .page blockquote {
+  margin: 13px 0;
+  padding: 0 0 0 17px;
+  border-left: 3px solid #009ae2;
+  font-style: italic;
+}
+#main #content .post .prettyprint,
+#main #content .page .prettyprint {
   font-size: 14px;
+  margin: 6px 0 12px;
+}
+#main #content .post .prettyprint ol,
+#main #content .page .prettyprint ol {
+  padding-left: 6px;
 }
 @media (min-width: 1200px) {
   #main #content {

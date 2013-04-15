@@ -3,26 +3,22 @@
 @import "bootstrap/mixins.less";
   @import "override/mixins.less";
 
+// CSS Reset
+@import "bootstrap/reset.less";
+  @import "override/reset.less";
+
 @import "bootstrap/utilities.less";
   @import "override/utilities.less";
 
 @import "override/icons.less";
-
-a{
-  cursor: pointer;
-  color: @linkColor;
-  &:hover{
-    color: @linkColorHover;
-  }
-}
 
 html, body{
   background: #fafafa;
   min-height: 400px;
   height: 100%;
   font-family: 'ProximaNovaLight', Verdana, Geneva, Arial, sans-serief;
-  font-size: @baseFontSize;
-  line-height: @baseLineHeight;
+  font-size: @baseFontSize + 2;
+  line-height: @baseLineHeight + 2;
   margin: 0;
   padding: 0;
 }
@@ -38,11 +34,14 @@ html, body{
     width: auto;
     max-width: 730px;
 
-    .post{
+    .post, .page{
       
       h1.post-title{
         font-size: @fontSizeHuge + 6px;
         line-height: @fontSizeHuge + 12px;
+        padding-bottom: 10px;
+        font-weight: normal;
+        border: 0;
 
         a{
           text-decoration: none;
@@ -51,8 +50,55 @@ html, body{
 
       }
 
+      p{
+        margin: 0.4em 0;
+      }
+
+      strong{
+
+      }
+
+      ol, ul{
+        padding-left: 33px;
+      }
+
+      h1, h2, h3{
+        font-weight: normal;
+        border-bottom: 1px solid @grayLight;
+      }
+
+      h1{
+        font-size: @fontSizeHuge;
+      }
+
+      h2{
+        font-size: @fontSizeLarge + 2;
+      }
+
+      h3{
+        font-size: @baseFontSize + 2;
+      }
+
+      blockquote{
+        margin: 13px 0;
+        padding: 0 0 0 17px;
+        border-left: 3px solid @blue;
+        font-style: italic;
+
+        p{
+          
+        }
+
+      }
+
       .prettyprint{
         font-size: @baseFontSize;
+        margin: 6px 0 12px;
+
+        ol{
+          padding-left: 6px;
+        }
+
       }
 
     }
