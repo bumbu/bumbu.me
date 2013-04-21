@@ -6,8 +6,8 @@
  */
 ?>
 	<div class="panels">
-		<div class="panel-main open_">
-			<a href="<?php echo site_url(); ?>" class="logo"><i class="icon icon-bumbu-logo"></i><div class="logo-image"><img src="<?php bloginfo( 'template_url' ); ?>/img/logo-bumbu-text.png" alt="bumbu logo" width="116" height="24"></div></a>
+		<div class="panel-main" id="panel-main">
+			<a href="<?php echo site_url(); ?>" class="logo"><i class="icon icon-bumbu-logo" id="icon-logo"></i><div class="logo-image"><img src="<?php bloginfo( 'template_url' ); ?>/img/logo-bumbu-text.png" alt="bumbu logo" width="116" height="24"></div></a>
 			<?php if ( ! dynamic_sidebar( 'sidebar-panel-main' ) ) : ?>
 			<?php endif; // end sidebar widget area ?>
 

@@ -20,6 +20,7 @@
 <![endif]-->
 
 <?php wp_head(); ?>
+<script src="<?php bloginfo( 'template_url' ); ?>/js/application.js"></script>
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_url' ); ?>/css/font.css" />
 <link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_url' ); ?>/css/application.css" />
 

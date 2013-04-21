@@ -18,12 +18,8 @@
     overflow: hidden;
     .transition(all 0.7s);
 
-    &:hover, &.open{
+    &.open{
       width: @panel_main_width_open;
-
-      .logo{
-        .rotateAndTranslate(0, 0, 0);
-      }
     }
 
     .logo{
@@ -31,10 +27,8 @@
       position: absolute;
       height: @link_height;
       width: @panel_main_width_open - 9;
-      top: 7px;
-      left: 7px;
-      .transition(all 0.7s);
-      .rotateAndTranslate(90deg, 82px, 98px);
+      top: 9px;
+      left: 9px;
 
       &:hover{
       }
@@ -46,7 +40,7 @@
 
       .logo-image{
         display: inline-block;
-        margin: 1px 0 0;
+        margin: 1px 0 0 1px;
       }
 
     }

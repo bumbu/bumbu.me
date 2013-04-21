@@ -294,34 +294,16 @@ body {
   -o-transition: all 0.7s;
   transition: all 0.7s;
 }
-.panels .panel-main:hover,
 .panels .panel-main.open {
   width: 216px;
-}
-.panels .panel-main:hover .logo,
-.panels .panel-main.open .logo {
-  -webkit-transform: rotate(0) translate(0, 0);
-  -moz-transform: rotate(0) translate(0, 0);
-  -ms-transform: rotate(0) translate(0, 0);
-  -o-transform: rotate(0) translate(0, 0);
-  transform: rotate(0) translate(0, 0);
 }
 .panels .panel-main .logo {
   display: block;
   position: absolute;
   height: 44px;
   width: 207px;
-  top: 7px;
-  left: 7px;
-  -webkit-transition: all 0.7s;
-  -moz-transition: all 0.7s;
-  -o-transition: all 0.7s;
-  transition: all 0.7s;
-  -webkit-transform: rotate(90deg) translate(82px, 98px);
-  -moz-transform: rotate(90deg) translate(82px, 98px);
-  -ms-transform: rotate(90deg) translate(82px, 98px);
-  -o-transform: rotate(90deg) translate(82px, 98px);
-  transform: rotate(90deg) translate(82px, 98px);
+  top: 9px;
+  left: 9px;
 }
 .panels .panel-main .logo i.icon {
   vertical-align: top;
@@ -329,7 +311,7 @@ body {
 }
 .panels .panel-main .logo .logo-image {
   display: inline-block;
-  margin: 1px 0 0;
+  margin: 1px 0 0 1px;
 }
 .panels .panel-main .menu {
   display: block;
