@@ -13,14 +13,18 @@
 @import "override/icons.less";
 
 html, body{
-  background: #fafafa;
+  background: #fdfeff;
   min-height: 400px;
   height: 100%;
-  font-family: 'ProximaNovaLight', Verdana, Geneva, Arial, sans-serief;
-  font-size: @baseFontSize + 2;
-  line-height: @baseLineHeight + 2;
+  font-family: @baseFontFamily;
+  font-size: @baseFontSize;
+  line-height: @baseLineHeight;
   margin: 0;
   padding: 0;
+}
+
+a{
+  text-decoration: none;
 }
 
 @import "panels.less";
@@ -37,10 +41,13 @@ html, body{
     .post, .page{
       
       h1.post-title, h1.post-title:first-child{
-        font-size: @fontSizeHuge + 6px;
-        line-height: @fontSizeHuge + 12px;
-        padding: 11px 0 10px;
-        font-weight: normal;
+        font-family: @headingsFontFamily;
+        font-weight: @headingsFontWeight;        
+        font-size: @fontSizeHuge * 1.75;
+        line-height: 1.2;
+        padding: 0;
+        margin-top: 15px;
+        margin-bottom: 5px;
         border: 0;
 
         a{
@@ -51,21 +58,38 @@ html, body{
       }
 
       p{
-        margin: 0.4em 0;
+        margin: 15px 0;
       }
 
       strong{
 
       }
 
-      ol, ul{
+      ul{
+        padding-left: 33px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li{
+          padding: 2px 0 0 20px;
+          background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAwMS8yMS8xMRTK2QYAAAAedEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzUuMasfSOsAAABqSURBVBiVtc3BCYUwEITh8WENhrcWqykvkCZccW1iBr15CvHkwtx+vh1qrSuABf3LQynlMpvxN2sWZwQiDvxIYkoJkpqbUgJJjJJAsvtXEkaSkNQNPxTfwkd032A2N6OI4xHz7r7s7j003wTAZ1MdsZ+rAAAAAElFTkSuQmCC) 0 50% no-repeat;
+
+          &:first-child{
+            margin-top: 0;
+          }
+        }
+      }
+
+      ol{
         padding-left: 33px;
       }
 
       h1, h2, h3{
-        font-weight: normal;
-        border-bottom: 1px solid @grayLight;
-        padding-top: 10px;
+        font-family: @headingsFontFamily;
+        font-weight: @headingsFontWeight;
+        // padding-top: 10px;
+        margin: 25px 0 15px;
 
         &:first-child{
           padding-top: 0;
@@ -74,15 +98,15 @@ html, body{
       }
 
       h1{
-        font-size: @fontSizeHuge;
+        font-size: @fontSizeHuge * 1.08;
       }
 
       h2{
-        font-size: @fontSizeLarge + 2;
+        font-size: @fontSizeHuge * 0.92;
       }
 
       h3{
-        font-size: @baseFontSize + 2;
+        font-size: @fontSizeHuge * 0.8;
       }
 
       blockquote{
@@ -100,11 +124,19 @@ html, body{
       .prettyprint{
         font-size: @baseFontSize;
         margin: 6px 0 12px;
-
+        
         ol{
           padding-left: 6px;
         }
 
+      }
+
+      p + .prettyprint{
+        margin-top: -9px;
+      }
+
+      .prettyprint + p{
+        margin-top: 24px;
       }
 
     }

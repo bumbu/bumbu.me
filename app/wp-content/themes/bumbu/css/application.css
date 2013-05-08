@@ -25,6 +25,23 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+.clearfix_table {
+  position: relative;
+  /* display: table */
+
+  display: table;
+}
+.clearfix_table:after {
+  content: '. .';
+  display: block;
+  word-spacing: 99in;
+  height: 0;
+  overflow: hidden;
+  /* Лекарство бага с оступом в Opera */
+
+  font-size: 0.13em;
+  line-height: 0;
+}
 article,
 aside,
 details,
@@ -196,10 +213,10 @@ textarea {
 }
 a {
   cursor: pointer;
-  color: #0088cc;
+  color: #0096d7;
 }
 a:hover {
-  color: #005580;
+  color: #1e6491;
 }
 h1,
 h2,
@@ -264,20 +281,24 @@ ol {
 }
 html,
 body {
-  background: #fafafa;
+  background: #fdfeff;
   min-height: 400px;
   height: 100%;
-  font-family: 'ProximaNovaLight', Verdana, Geneva, Arial, sans-serief;
-  font-size: 16px;
-  line-height: 22px;
+  font-family: 'DroidSans', Verdana, Geneva, Arial, sans-serief;
+  font-size: 14px;
+  line-height: 20px;
   margin: 0;
   padding: 0;
+}
+a {
+  text-decoration: none;
 }
 .panels {
   height: 100%;
   float: left;
   width: 290px;
   margin: 0 0 0 -100%;
+  font-family: 'ProximaNovaLight', Verdana, Geneva, Arial, sans-serif;
 }
 .panels .panel-main {
   position: fixed;
@@ -286,7 +307,7 @@ body {
   left: 0;
   z-index: 3;
   border-right: 1px solid #9f9f9f;
-  background: #fff;
+  background: #fafafa;
   width: 43px;
   overflow: hidden;
   -webkit-transition: all 0.7s;
@@ -415,10 +436,13 @@ body {
 #main #content .page h1.post-title,
 #main #content .post h1.post-title:first-child,
 #main #content .page h1.post-title:first-child {
-  font-size: 29.939999999999998px;
-  line-height: 35.94px;
-  padding: 11px 0 10px;
-  font-weight: normal;
+  font-family: 'ProximaNovaThin', Verdana, Geneva, Arial, sans-serif;
+  font-weight: 100;
+  font-size: 41.894999999999996px;
+  line-height: 1.2;
+  padding: 0;
+  margin-top: 15px;
+  margin-bottom: 5px;
   border: 0;
 }
 #main #content .post h1.post-title a,
@@ -430,12 +454,26 @@ body {
 }
 #main #content .post p,
 #main #content .page p {
-  margin: 0.4em 0;
+  margin: 15px 0;
 }
-#main #content .post ol,
-#main #content .page ol,
 #main #content .post ul,
 #main #content .page ul {
+  padding-left: 33px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#main #content .post ul li,
+#main #content .page ul li {
+  padding: 2px 0 0 20px;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABZ0RVh0Q3JlYXRpb24gVGltZQAwMS8yMS8xMRTK2QYAAAAedEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzUuMasfSOsAAABqSURBVBiVtc3BCYUwEITh8WENhrcWqykvkCZccW1iBr15CvHkwtx+vh1qrSuABf3LQynlMpvxN2sWZwQiDvxIYkoJkpqbUgJJjJJAsvtXEkaSkNQNPxTfwkd032A2N6OI4xHz7r7s7j003wTAZ1MdsZ+rAAAAAElFTkSuQmCC) 0 50% no-repeat;
+}
+#main #content .post ul li:first-child,
+#main #content .page ul li:first-child {
+  margin-top: 0;
+}
+#main #content .post ol,
+#main #content .page ol {
   padding-left: 33px;
 }
 #main #content .post h1,
@@ -444,9 +482,9 @@ body {
 #main #content .page h2,
 #main #content .post h3,
 #main #content .page h3 {
-  font-weight: normal;
-  border-bottom: 1px solid #e2e2e2;
-  padding-top: 10px;
+  font-family: 'ProximaNovaThin', Verdana, Geneva, Arial, sans-serif;
+  font-weight: 100;
+  margin: 25px 0 15px;
 }
 #main #content .post h1:first-child,
 #main #content .page h1:first-child,
@@ -458,21 +496,21 @@ body {
 }
 #main #content .post h1,
 #main #content .page h1 {
-  font-size: 23.939999999999998px;
+  font-size: 25.8552px;
 }
 #main #content .post h2,
 #main #content .page h2 {
-  font-size: 19.5px;
+  font-size: 22.0248px;
 }
 #main #content .post h3,
 #main #content .page h3 {
-  font-size: 16px;
+  font-size: 19.151999999999997px;
 }
 #main #content .post blockquote,
 #main #content .page blockquote {
   margin: 13px 0;
   padding: 0 0 0 17px;
-  border-left: 3px solid #009ae2;
+  border-left: 3px solid #0096d7;
   font-style: italic;
 }
 #main #content .post .prettyprint,
@@ -483,6 +521,14 @@ body {
 #main #content .post .prettyprint ol,
 #main #content .page .prettyprint ol {
   padding-left: 6px;
+}
+#main #content .post p + .prettyprint,
+#main #content .page p + .prettyprint {
+  margin-top: -9px;
+}
+#main #content .post .prettyprint + p,
+#main #content .page .prettyprint + p {
+  margin-top: 24px;
 }
 @media (min-width: 1200px) {
   #main #content {
