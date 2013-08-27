@@ -1,4 +1,3 @@
-//@ sourceMappingURL=application.map
 (function() {
   jQuery(function() {
     return jQuery('#icon-logo').on('click', function(ev) {
