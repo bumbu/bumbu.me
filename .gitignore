@@ -1,6 +1,7 @@
 # Wordpress
 app/wp-config.php
 app/wp-content/uploads/*
+app/.htaccess
 
 # Node packages
 node_modules
