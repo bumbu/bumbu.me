@@ -14,7 +14,7 @@
 			<?php
 				$menu_name = 'primary';
 				$category_active = 0;
-				$category_active_title = '';
+				$category_active_title = 'bumbu';
 				$category_first = 0;
 				$category_post = 0;
 				$visible_categories = array();
