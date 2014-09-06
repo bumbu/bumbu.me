@@ -5,9 +5,9 @@
   margin: 0 0 0 0-100%;
   font-family: @headingsFontFamily2;
 
-  .panel-main{
-    @link_height: 44px;
+  @link_height: 44px;
 
+  .panel-main{
     position: fixed;
     top: 0;
     bottom: 0;
@@ -50,8 +50,9 @@
       display: block;
       padding: 0;
       position: absolute;
-      top: 50%;
-      margin: -@link_height*2 0 0;
+      top: @link_height;
+      margin: 0;
+      border-top: 1px solid @gray;
 
       li{
         display: block;
@@ -117,14 +118,26 @@
     border-right: 1px solid @gray;
     overflow: auto;
 
+    .item.header{
+      padding-top: 0;
+      padding-bottom: 0;
+      border-bottom: 1px solid @gray;
+
+      h4{
+        margin: 0;
+        padding: 0 10px 0 0;
+        height: @link_height;
+        line-height: @link_height;
+        font-size: 24px;
+        font-weight: normal;
+        text-decoration: none;
+        color: @grayDarker;
+      }
+    }
+
     .item{
       padding: 14px;
       cursor: pointer;
-
-      &.searchbar{
-        height: @panel_main_width_closed;
-        padding: 0;
-      }
 
       &.active, &.active:hover{
         background: @grayLight;

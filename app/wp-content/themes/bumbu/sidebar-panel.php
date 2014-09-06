@@ -14,6 +14,7 @@
 			<?php
 				$menu_name = 'primary';
 				$category_active = 0;
+				$category_active_title = '';
 				$category_first = 0;
 				$category_post = 0;
 				$visible_categories = array();
@@ -60,6 +61,7 @@
 						// Check for category
 						if($menu_item->object == 'category' && $menu_item->object_id == $category_active){
 							$menu_item->classes[] = 'active';
+							$category_active_title = $menu_item->title;
 						}
 
 						// Build like
@@ -77,8 +79,10 @@
 		</div>
 		<div class="panel-first">
 			<?php if ( ! dynamic_sidebar( 'sidebar-panel-first' ) ) : ?>
-				<div class="item searchbar"></div>
-				<?php 
+				<div class="item header">
+					<h4><?php echo $category_active_title; ?></h4>
+				</div>
+				<?php
 				$_posts = wp_get_recent_posts(array(
 					'numberposts' => 50
 				,	'category' => $category_active
