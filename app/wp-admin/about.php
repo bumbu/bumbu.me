@@ -7,7 +7,14 @@
  */
 
 /** WordPress Administration Bootstrap */
-require_once( './admin.php' );
+require_once( dirname( __FILE__ ) . '/admin.php' );
+
+wp_enqueue_style( 'wp-mediaelement' );
+wp_enqueue_script( 'wp-mediaelement' );
+wp_localize_script( 'mediaelement', '_wpmejsSettings', array(
+	'pluginPath' => includes_url( 'js/mediaelement/', 'relative' ),
+	'pauseOtherPlayers' => ''
+) );
 
 $title = __( 'About' );
 
@@ -15,11 +22,12 @@ list( $display_version ) = explode( '-', $wp_version );
 
 include( ABSPATH . 'wp-admin/admin-header.php' );
 ?>
+<!--[if lt IE 9]><script>document.createElement('audio');document.createElement('video');</script><![endif]-->
 <div class="wrap about-wrap">
 
-<h1><?php printf( __( 'Welcome to WordPress %s' ), $display_version ); ?></h1>
+<h1><?php printf( __( 'Welcome to WordPress&nbsp;%s' ), $display_version ); ?></h1>
 
-<div class="about-text"><?php printf( __( 'Thank you for updating to the latest version. WordPress %s makes your writing experience even better.' ), $display_version ); ?></div>
+<div class="about-text"><?php printf( __( 'Thank you for updating! WordPress %s brings you a smoother writing and management experience.' ), $display_version ); ?></div>
 
 <div class="wp-badge"><?php printf( __( 'Version %s' ), $display_version ); ?></div>
 
@@ -34,112 +42,124 @@ include( ABSPATH . 'wp-admin/admin-header.php' );
 </h2>
 
 <div class="changelog">
-	<h3><?php _e( 'Colorful New Theme' ); ?></h3>
-
-	<div class="feature-section images-stagger-right">
-		<img alt="" src="<?php echo is_ssl() ? 'https://' : '//s.'; ?>wordpress.org/images/core/3.6/twentythirteen.png" class="image-66" />
-		<h4><?php _e( 'Introducing Twenty Thirteen' ); ?></h4>
-		<p><?php printf( __( "The new default theme puts focus on your content with a colorful, single-column design made for media-rich blogging." ) ); ?></p>
-		<p><?php _e( 'Inspired by modern art, Twenty Thirteen features quirky details, beautiful typography, and bold, high-contrast colors &mdash; all with a flexible layout that looks great on any device, big or small.' ); ?></p>
+	<div class="about-overview">
+		<?php if ( ( $locale = get_locale() ) && 'en_' === substr( $locale, 0, 3 ) ) : ?>
+			<embed src="//v.wordpress.com/bUdzKMro" type="application/x-shockwave-flash" width="640" height="360" allowscriptaccess="always" allowfullscreen="true" wmode="transparent"></embed>
+		<?php else : ?>
+			<img class="about-overview-img" src="//s.w.org/images/core/4.0/wp40.png" width="640" height="360" />
+		<?php endif; ?>
 	</div>
-</div>
 
-<div class="changelog">
-	<h3><?php _e( 'Write with Confidence' ); ?></h3>
-
-	<div class="feature-section images-stagger-right">
-		<img alt="" src="<?php echo is_ssl() ? 'https://' : '//s.'; ?>wordpress.org/images/core/3.6/revisions.png" class="image-66" />
-		<h4><?php _e( 'Explore Revisions' ); ?></h4>
-		<p></p>
-		<p><?php _e( 'From the first word you write, WordPress saves every change. Each revision is always at your fingertips. Text is highlighted as you scroll through revisions at lightning speed, so you can see what changes have been made along the way.' ); ?></p>
-		<p><?php _e( 'It&#8217;s easy to compare two revisions from any point in time, and to restore a revision and go back to writing. Now you can be confident that no mistake is permanent.' ); ?></p>
-	</div>
+	<hr />
 
 	<div class="feature-section col two-col">
-		<div>
-			<h4><?php _e( 'Improved Autosaves' ); ?></h4>
-			<p><?php _e( 'Never lose a word you&#8217;ve written. Autosaving is now even better; whether your power goes out, your browser crashes, or you lose your internet connection, your content is safe.' ); ?></p>
+		<div class="col-1">
+			<h3><?php _e( 'Manage your media with style' ); ?></h3>
+			<p><?php _e( 'Explore your uploads in a beautiful, endless grid. A new details preview makes viewing and editing any amount of media in sequence a snap.' ); ?></p>
 		</div>
-		<div class="last-feature">
-			<h4><?php _e( 'Better Post Locking' ); ?></h4>
-			<p><?php _e( 'Always know who&#8217;s editing with live updates that appear in the list of posts. And if someone leaves for lunch with a post open, you can take over where they left off.' ); ?></p>
+		<div class="col-2 last-feature">
+			<img src="//s.w.org/images/core/4.0/media.jpg" />
+		</div>
+	</div>
+
+	<hr />
+
+	<div class="feature-section col two-col">
+		<div class="col-1">
+			<div class="about-video about-video-embed">
+				<?php
+					echo wp_video_shortcode( array(
+						'mp4'      => '//s.w.org/images/core/4.0/embed.mp4',
+						'ogv'      => '//s.w.org/images/core/4.0/embed.ogv',
+						'webm'      => '//s.w.org/images/core/4.0/embed.webm',
+						'loop'     => true,
+						'autoplay' => true,
+						'width'    => 500,
+						'height'   => 352
+					) );
+				?>
+			</div>
+		</div>
+		<div class="col-2 last-feature">
+			<h3><?php _e( 'Working with embeds has never been easier' ); ?></h3>
+			<p><?php _e( 'Paste in a YouTube URL on a new line, and watch it magically become an embedded video. Now try it with a tweet. Oh yeah &#8212; embedding has become a visual experience. The editor shows a true preview of your embedded content, saving you time and giving you confidence.' ); ?></p>
+			<p><?php _e( 'We&#8217;ve expanded the services supported by default, too &#8212; you can embed videos from CollegeHumor, playlists from YouTube, and talks from TED. <a href="http://codex.wordpress.org/Embeds">Check out all of the embeds</a> that WordPress supports.' ); ?></p>
+		</div>
+	</div>
+
+	<hr />
+
+	<div class="feature-section col two-col">
+		<div class="col-1">
+			<h3><?php _e( 'Focus on your content' ); ?></h3>
+			<p><?php _e( 'Writing and editing is smoother and more immersive with an editor that expands to fit your content as you write, and keeps the formatting tools available at all times.' ); ?></p>
+		</div>
+		<div class="col-2 last-feature">
+			<div class="about-video about-video-focus">
+				<?php
+					echo wp_video_shortcode( array(
+						'mp4'      => '//s.w.org/images/core/4.0/focus.mp4',
+						'ogv'      => '//s.w.org/images/core/4.0/focus.ogv',
+						'webm'      => '//s.w.org/images/core/4.0/focus.webm',
+						'loop'     => true,
+						'autoplay' => true,
+						'width'    => 500,
+						'height'   => 281
+					) );
+				?>
+			</div>
+		</div>
+	</div>
+
+	<hr />
+
+	<div class="feature-section col two-col">
+		<div class="col-1">
+			<img src="//s.w.org/images/core/4.0/plugins.png" />
+		</div>
+		<div class="col-2 last-feature">
+			<h3 class="higher"><?php _e( 'Finding the right plugin' ); ?></h3>
+			<p><?php _e( 'There are more than 30,000 free and open source plugins in the WordPress plugin directory. WordPress 4.0 makes it easier to find the right one for your needs, with new metrics, improved search, and a more visual browsing experience.' ); ?></p>
+			<a href="<?php echo admin_url( 'plugin-install.php' ); ?>" class="button button-large button-primary"><?php _e( 'Browse plugins' ); ?></a>
 		</div>
 	</div>
 </div>
 
-<div class="changelog">
-	<h3><?php _e( 'Support for Audio and Video' ); ?></h3>
+<hr />
 
-	<div class="feature-section images-stagger-right">
-		<div class="video image-66"><?php
-			$sample_video = ( is_ssl() ? 'https://' : 'http://s.' ) . 'wordpress.org/images/core/3.6/sample-video';
-			$args = array(
-				'mp4' => "$sample_video.mp4",
-				'ogv' => "$sample_video.ogv",
-				'width' => 625,
-				'height' => 360,
-			);
-			// Opera 12 (Presto, pre-Chromium) fails to load ogv properly
-			// when combined with ME.js. Works fine in Opera 15.
-			// Don't serve ogv to Opera 12 to avoid complete brokeness.
-			if ( $GLOBALS['is_opera'] )
-				unset( $args['ogv'] );
-			// Our current ME.js API is limited to shortcodes in posts.
-			echo wp_video_shortcode( $args );
-		?></div>
-		<h4><?php _e( 'New Media Player' ); ?></h4>
-		<p><?php _e( 'Share your audio and video with the new built-in HTML5 media player. Upload files using the media manager and embed them in your posts.' ); ?></p>
-
-		<h4><?php _e( 'Embed Music from Spotify, Rdio, and SoundCloud' ); ?></h4>
-		<p><?php _e( 'Embed songs and albums from your favorite artists, or playlists you&#8217;ve mixed yourself. It&#8217;s as simple as pasting a URL into a post on its own line.' ); ?></p>
-		<p><?php printf( __( '(Love another service? Check out all of the <a href="%s">embeds</a> that WordPress supports.)' ), 'http://codex.wordpress.org/Embeds' ); ?></p>
-	</div>
-</div>
-
-<div class="changelog">
+<div class="changelog under-the-hood">
 	<h3><?php _e( 'Under the Hood' ); ?></h3>
 
 	<div class="feature-section col three-col">
 		<div>
-			<h4><?php _e( 'Audio/Video API' ); ?></h4>
-			<p><?php _e( 'The new audio/video APIs give developers access to powerful media metadata, like ID3 tags.' ); ?></p>
+		<h4><?php _e( 'Customizer API' ); ?></h4>
+			<p><?php _e( 'Contexts, panels, and a wider array of controls are now supported in the customizer.' ); ?></p>
 		</div>
 		<div>
-			<h4><?php _e( 'Semantic Markup' ); ?></h4>
-			<p><?php _e( 'Themes can now choose improved HTML5 markup for comment forms, search forms, and comment lists.' ); ?></p>
-		</div>
-		<div class="last-feature">
-			<h4><?php _e( 'JavaScript Utilities' ); ?></h4>
-			<p><?php _e( 'Handy JavaScript utilities ease common tasks like Ajax requests, templating, and Backbone view management.' ); ?></p>
-		</div>
-	</div>
-
-	<div class="feature-section col three-col">
-		<div>
-			<h4><?php _e( 'Shortcode Improvements' ); ?></h4>
-			<p><?php _e( 'Search content for shortcodes with <code>has_shortcode()</code> and adjust shortcode attributes with a new filter.' ); ?></p>
-		</div>
-		<div>
-			<h4><?php _e( 'Revision Control' ); ?></h4>
-			<p><?php _e( 'Fine-grained revision controls allow you to keep a different number of revisions for each post type.' ); ?></p>
+			<h4><?php _e( 'Query Ordering' ); ?></h4>
+			<p><?php
+				/* translators: 1: "ORDER BY" (SQL), 2: "WP_Query" */
+				printf( __( 'Developers have more flexibility creating %1$s clauses through %2$s.' ), '<code>ORDER&nbsp;BY</code>', '<code>WP_Query</code>' );
+			?></p>
 		</div>
 		<div class="last-feature">
 			<h4><?php _e( 'External Libraries' ); ?></h4>
-			<p><?php
-				/* translators: placeholders 2, 3 and 4 are version numbers */
-				printf( __( 'New and updated libraries: <a href="%1$s">MediaElement.js</a>, jQuery %2$s, jQuery UI %3$s, jQuery Migrate, Backbone %4$s.' ), 'http://mediaelementjs.com/', '1.10.2', '1.10.3', '1.0' ); ?></p>
+			<p><?php _e( 'Updated libraries: TinyMCE&nbsp;4.1.3, jQuery&nbsp;1.11.1, MediaElement&nbsp;2.15.' ); ?></p>
 		</div>
 	</div>
-</div>
 
-<div class="return-to-dashboard">
-	<?php if ( current_user_can( 'update_core' ) && isset( $_GET['updated'] ) ) : ?>
-	<a href="<?php echo esc_url( self_admin_url( 'update-core.php' ) ); ?>"><?php
-		is_multisite() ? _e( 'Return to Updates' ) : _e( 'Return to Dashboard &rarr; Updates' );
-	?></a> |
-	<?php endif; ?>
-	<a href="<?php echo esc_url( self_admin_url() ); ?>"><?php
-		is_blog_admin() ? _e( 'Go to Dashboard &rarr; Home' ) : _e( 'Go to Dashboard' ); ?></a>
+	<hr />
+
+	<div class="return-to-dashboard">
+		<?php if ( current_user_can( 'update_core' ) && isset( $_GET['updated'] ) ) : ?>
+		<a href="<?php echo esc_url( self_admin_url( 'update-core.php' ) ); ?>"><?php
+			is_multisite() ? _e( 'Return to Updates' ) : _e( 'Return to Dashboard &rarr; Updates' );
+		?></a> |
+		<?php endif; ?>
+		<a href="<?php echo esc_url( self_admin_url() ); ?>"><?php
+			is_blog_admin() ? _e( 'Go to Dashboard &rarr; Home' ) : _e( 'Go to Dashboard' ); ?></a>
+	</div>
+
 </div>
 
 </div>

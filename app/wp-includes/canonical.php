@@ -39,8 +39,23 @@
 function redirect_canonical( $requested_url = null, $do_redirect = true ) {
 	global $wp_rewrite, $is_IIS, $wp_query, $wpdb;
 
-	if ( is_trackback() || is_search() || is_comments_popup() || is_admin() || !empty($_POST) || is_preview() || is_robots() || ( $is_IIS && !iis7_supports_permalinks() ) )
+	if ( isset( $_SERVER['REQUEST_METHOD'] ) && ! in_array( strtoupper( $_SERVER['REQUEST_METHOD'] ), array( 'GET', 'HEAD' ) ) ) {
 		return;
+	}
+
+	// If we're not in wp-admin and the post has been published and preview nonce
+	// is non-existent or invalid then no need for preview in query
+	if ( is_preview() && get_query_var( 'p' ) && 'publish' == get_post_status( get_query_var( 'p' ) ) ) {
+		if ( ! isset( $_GET['preview_id'] )
+			|| ! isset( $_GET['preview_nonce'] )
+			|| ! wp_verify_nonce( $_GET['preview_nonce'], 'post_preview_' . (int) $_GET['preview_id'] ) ) {
+			$wp_query->is_preview = false;
+		}
+	}
+
+	if ( is_trackback() || is_search() || is_comments_popup() || is_admin() || is_preview() || is_robots() || ( $is_IIS && !iis7_supports_permalinks() ) ) {
+		return;
+	}
 
 	if ( !$requested_url ) {
 		// build the URL in the address bar
@@ -67,6 +82,11 @@ function redirect_canonical( $requested_url = null, $do_redirect = true ) {
 		$redirect['path'] = '';
 	if ( !isset($redirect['query']) )
 		$redirect['query'] = '';
+
+	// It's not a preview, so remove it from URL
+	if ( get_query_var( 'preview' ) ) {
+		$redirect['query'] = remove_query_arg( 'preview', $redirect['query'] );
+	}
 
 	if ( is_feed() && ( $id = get_query_var( 'p' ) ) ) {
 		if ( $redirect_url = get_post_comments_feed_link( $id, get_query_var( 'feed' ) ) ) {
@@ -99,6 +119,20 @@ function redirect_canonical( $requested_url = null, $do_redirect = true ) {
 				$redirect_url = get_permalink($redirect_post);
 				$redirect['query'] = _remove_qs_args_if_not_in_url( $redirect['query'], array( 'p', 'page_id', 'attachment_id', 'pagename', 'name', 'post_type' ), $redirect_url );
 			}
+		}
+
+		if ( get_query_var( 'day' ) && get_query_var( 'monthnum' ) && get_query_var( 'year' ) ) {
+			$year  = get_query_var( 'year' );
+			$month = get_query_var( 'monthnum' );
+			$day   = get_query_var( 'day' );
+			$date  = sprintf( '%04d-%02d-%02d', $year, $month, $day );
+			if ( ! wp_checkdate( $month, $day, $year, $date ) ) {
+				$redirect_url = get_month_link( $year, $month );
+				$redirect['query'] = _remove_qs_args_if_not_in_url( $redirect['query'], array( 'year', 'monthnum', 'day' ), $redirect_url );
+			}
+		} elseif ( get_query_var( 'monthnum' ) && get_query_var( 'year' ) && 12 < get_query_var( 'monthnum' ) ) {
+			$redirect_url = get_year_link( get_query_var( 'year' ) );
+			$redirect['query'] = _remove_qs_args_if_not_in_url( $redirect['query'], array( 'year', 'monthnum' ), $redirect_url );
 		}
 
 		if ( ! $redirect_url ) {
@@ -281,10 +315,13 @@ function redirect_canonical( $requested_url = null, $do_redirect = true ) {
 		}
 
 		if ( 'wp-register.php' == basename( $redirect['path'] ) ) {
-			if ( is_multisite() )
+			if ( is_multisite() ) {
+				/** This filter is documented in wp-login.php */
 				$redirect_url = apply_filters( 'wp_signup_location', network_site_url( 'wp-signup.php' ) );
-			else
+			} else {
 				$redirect_url = site_url( 'wp-login.php?action=register' );
+			}
+
 			wp_redirect( $redirect_url, 301 );
 			die();
 		}
@@ -322,6 +359,10 @@ function redirect_canonical( $requested_url = null, $do_redirect = true ) {
 		$redirect['port'] = $user_home['port'];
 	else
 		unset($redirect['port']);
+
+	if ( ! empty( $user_home['scheme'] ) && $user_home['scheme'] === 'https' ) {
+		$redirect['scheme'] = 'https';
+	}
 
 	// trailing /index.php
 	$redirect['path'] = preg_replace('|/' . preg_quote( $wp_rewrite->index, '|' ) . '/*?$|', '/', $redirect['path']);
@@ -380,7 +421,7 @@ function redirect_canonical( $requested_url = null, $do_redirect = true ) {
 		( strtolower($original['host']) != 'www.' . strtolower($redirect['host']) && 'www.' . strtolower($original['host']) != strtolower($redirect['host']) ) )
 		$redirect['host'] = $original['host'];
 
-	$compare_original = array($original['host'], $original['path']);
+	$compare_original = array( $original['scheme'], $original['host'], $original['path'] );
 
 	if ( !empty( $original['port'] ) )
 		$compare_original[] = $original['port'];
@@ -388,7 +429,7 @@ function redirect_canonical( $requested_url = null, $do_redirect = true ) {
 	if ( !empty( $original['query'] ) )
 		$compare_original[] = $original['query'];
 
-	$compare_redirect = array($redirect['host'], $redirect['path']);
+	$compare_redirect = array( $redirect['scheme'], $redirect['host'], $redirect['path'] );
 
 	if ( !empty( $redirect['port'] ) )
 		$compare_redirect[] = $redirect['port'];
@@ -418,8 +459,17 @@ function redirect_canonical( $requested_url = null, $do_redirect = true ) {
 		$requested_url = preg_replace_callback('|%[a-fA-F0-9][a-fA-F0-9]|', 'lowercase_octets', $requested_url);
 	}
 
-	// Note that you can use the "redirect_canonical" filter to cancel a canonical redirect for whatever reason by returning false
-	$redirect_url = apply_filters('redirect_canonical', $redirect_url, $requested_url);
+	/**
+	 * Filter the canonical redirect URL.
+	 *
+	 * Returning false to this filter will cancel the redirect.
+	 *
+	 * @since 2.3.0
+	 *
+	 * @param string $redirect_url  The redirect URL.
+	 * @param string $requested_url The requested URL.
+	 */
+	$redirect_url = apply_filters( 'redirect_canonical', $redirect_url, $requested_url );
 
 	if ( !$redirect_url || $redirect_url == $requested_url ) // yes, again -- in case the filter aborted the request
 		return false;
@@ -443,7 +493,7 @@ function redirect_canonical( $requested_url = null, $do_redirect = true ) {
  * Removes arguments from a query string if they are not present in a URL
  * DO NOT use this in plugin code.
  *
- * @since 3.4
+ * @since 3.4.0
  * @access private
  *
  * @return string The altered query string
@@ -474,7 +524,7 @@ function redirect_guess_404_permalink() {
 	global $wpdb, $wp_rewrite;
 
 	if ( get_query_var('name') ) {
-		$where = $wpdb->prepare("post_name LIKE %s", like_escape( get_query_var('name') ) . '%');
+		$where = $wpdb->prepare("post_name LIKE %s", $wpdb->esc_like( get_query_var('name') ) . '%');
 
 		// if any of post_type, year, monthnum, or day are set, use them to refine the query
 		if ( get_query_var('post_type') )
