@@ -4,8 +4,55 @@
 
 
 @media (max-width: 767px) {
-  #main #content{
+  .panels {
+    height: auto;
+    float: none;
     width: auto;
+    margin: 0;
+
+    .panel-main{
+      position: static;
+      bottom: auto;
+      width: auto;
+      height: 44px;
+
+      .logo{
+        width: 26px;
+        height: 26px;
+        position: static;
+        margin: 9px;
+
+        .logo-image{
+          display: none;
+        }
+      }
+
+      .menu {
+        left: 44px;
+        top: 0;
+        border: 0;
+
+        li{
+          float: left;
+          width: 44px;
+          overflow: hidden;
+        }
+      }
+    }
+
+    .panel-first{
+      position: static;
+      top: 0;
+      bottom: auto;
+      left: 0;
+      width: auto;
+      border: 0;
+    }
+  }
+
+  #main #content{
+    max-width: 100000px;
+    margin: 10px;
   }
 }
 
