@@ -101,8 +101,8 @@
 					<?php
 					} else {
 					?>
-						<div class="item" onclick="location.href='<?php echo $_post['guid']?>'">
-							<a class="title" href="<?php echo $_post['guid']?>"><?php echo $_post['post_title']; ?></a>
+						<div class="item" onclick="location.href='<?php echo get_permalink($_post['ID'])?>'">
+							<a class="title" href="<?php echo get_permalink($_post['ID'])?>"><?php echo $_post['post_title']; ?></a>
 							<div class="content"><?php echo $_post['post_excerpt']; ?></div>
 						</div>
 					<?php
