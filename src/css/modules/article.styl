@@ -1,7 +1,7 @@
 .body-container .post,
 .body-container .page
 
-  h1.post-title, h1.post-title:first-child{
+  h1.post-title, h1.post-title:first-child
     font-family: $headingsFontFamily;
     font-weight: $headingsFontWeight;
     font-size: $fontSizeH1;
@@ -11,31 +11,26 @@
     margin-bottom: 5px;
     border: 0;
 
-    a{
+    a
       text-decoration: none;
       color: $black;
-    }
 
-  }
-
-  p{
+  p
     margin: 15px 0;
-  }
 
-  ul{
+  ul
     padding-left: 33px;
     list-style: none;
     margin: 0;
     padding: 0;
 
-    li{
+    li
       padding: 2px 0 0 20px;
       position: relative;
 
-      &:first-child{
+      &:first-child
         margin-top: 0;
-      }
-      &:before{
+      &:before
         content: '';
         display: block;
         position: absolute;
@@ -48,14 +43,11 @@
         border-bottom-color: #adadad;
         box-sizing: border-box;
         border-radius: 50%;
-        linear-gradient(top, #fcfdfe, #e4e5e6)
-      }
-    }
-  }
+        background #fcfdfe
+        // linear-gradient(top, #fcfdfe, #e4e5e6) // compiles breaks
 
-  ol{
+  ol
     padding-left: 33px;
-  }
 
   h1, h2, h3
     font-family: $headingsFontFamily;
@@ -81,28 +73,24 @@
     font-size $fontSizeH4
     margin ($fontSizeH4 * 1.2) 0 ($fontSizeH4 * 0.7)
 
-  blockquote{
+  blockquote
     margin 13px 0
     padding: 0 0 0 17px;
     border-left: 3px solid $blue;
     font-style: italic;
 
-  }
 
-  .prettyprint{
+  .prettyprint
     font-size: $baseFontSize;
     margin: 6px 0 12px;
 
-    ol{
+    ol
       padding-left: 6px;
-    }
 
-  }
 
-  p + .prettyprint{
+  p + .prettyprint
     margin-top: -9px;
-  }
 
-  .prettyprint + p{
+  .prettyprint + p
     margin-top: 24px;
-  }
+
