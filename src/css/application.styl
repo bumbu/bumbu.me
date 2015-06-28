@@ -1,0 +1,37 @@
+@import 'nib'
+@import 'variables'
+global-reset()
+
+// Modules
+@import 'modules/mixins'
+@import 'modules/icons'
+
+html, body{
+  background: $whiteGray;
+  min-height: 400px;
+  height: 100%;
+  font-family: $baseFontFamily;
+  font-size: $baseFontSize;
+  line-height: $baseLineHeight;
+  margin: 0;
+  padding: 0;
+}
+
+a{
+  text-decoration: none;
+}
+
+@import 'modules/article'
+@import 'modules/sidebar'
+
+.layout
+  padding-left $sidebarWidth
+
+.body-container
+  margin 23px
+  width auto
+  max-width 730px
+
+@media (max-width: 767px)
+  .layout
+    padding-left 0

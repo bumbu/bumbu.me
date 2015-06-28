@@ -5,8 +5,9 @@
  * @package bumbu
  */
 ?>
-	<div class="panels">
-		<div class="panel-main" id="panel-main">
+	<div class="sidebar">
+		<a href="#" class="sidebar-trigger" id="sidebar-trigger"><span class="lines"></span></a>
+		<div class="sidebar-primary" id="sidebar-main">
 			<a href="<?php echo site_url(); ?>" class="logo"><i class="icon icon-bumbu" id="icon-logo"></i></a>
 			<?php if ( ! dynamic_sidebar( 'sidebar-panel-main' ) ) : ?>
 			<?php endif; // end sidebar widget area ?>
@@ -77,7 +78,7 @@
 				echo $menu_list;
 			?>
 		</div>
-		<div class="panel-first">
+		<div class="sidebar-secondary">
 			<?php if ( ! dynamic_sidebar( 'sidebar-panel-first' ) ) : ?>
 				<div class="item header">
 					<h4><?php echo $category_active_title; ?></h4>
@@ -94,17 +95,11 @@
 
 					if ($active_id == $_post['ID']) {
 					?>
-						<div class="item active">
-							<div class="title"><?php echo $_post['post_title']; ?></div>
-							<div class="content"><?php echo $_post['post_excerpt']; ?></div>
-						</div>
+						<a class="item active" href="<?php echo get_permalink($_post['ID'])?>"><span class="title"><?php echo $_post['post_title']; ?></span></a>
 					<?php
 					} else {
 					?>
-						<div class="item" onclick="location.href='<?php echo get_permalink($_post['ID'])?>'">
-							<a class="title" href="<?php echo get_permalink($_post['ID'])?>"><?php echo $_post['post_title']; ?></a>
-							<div class="content"><?php echo $_post['post_excerpt']; ?></div>
-						</div>
+						<a class="item" href="<?php echo get_permalink($_post['ID'])?>"><span class="title"><?php echo $_post['post_title']; ?></span></a>
 					<?php
 					}
 

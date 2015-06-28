@@ -11,7 +11,9 @@
 </div><!-- #page -->
 
 <?php wp_footer(); ?>
+</div><!-- .layout -->
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="<?php bloginfo( 'template_url' ); ?>/js/application.js"></script>
 <script type="text/javascript">
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
