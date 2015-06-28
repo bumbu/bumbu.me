@@ -7,7 +7,7 @@
 ?>
 	<div class="panels">
 		<div class="panel-main" id="panel-main">
-			<a href="<?php echo site_url(); ?>" class="logo"><i class="icon icon-bumbu-logo" id="icon-logo"></i><div class="logo-image"><img src="<?php bloginfo( 'template_url' ); ?>/img/logo-bumbu-text.png" alt="bumbu logo" width="116" height="24"></div></a>
+			<a href="<?php echo site_url(); ?>" class="logo"><i class="icon icon-bumbu" id="icon-logo"></i></a>
 			<?php if ( ! dynamic_sidebar( 'sidebar-panel-main' ) ) : ?>
 			<?php endif; // end sidebar widget area ?>
 
@@ -70,7 +70,7 @@
 						$li_class = join(' ', $menu_item->classes);
 						$a_class = 'icon icon-'.strtolower($menu_item->title);
 
-						$menu_list .= '<li class="' . $li_class . '"><a class="' . $a_class . '" href="' . $url . '">' . $title . '</a></li>';
+						$menu_list .= '<li class="' . $li_class . '"><a class="' . $a_class . '" href="' . $url . '"></a></li>';
 					}
 					$menu_list .= '</ul>';
 				}
