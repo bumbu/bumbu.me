@@ -156,3 +156,8 @@ function my_function_admin_bar(){
 	return false;
 }
 add_filter( 'show_admin_bar' , 'my_function_admin_bar');
+
+function my_theme_add_editor_styles() {
+    add_editor_style();
+}
+add_action( 'admin_init', 'my_theme_add_editor_styles' );

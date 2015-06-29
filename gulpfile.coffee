@@ -77,7 +77,7 @@ gulp.task 'build-scripts', ->
     .pipe livereload auto: false
 
 _cssHash = ''
-gulp.task 'build-styles', ['build-styles-files'], ->
+gulp.task 'build-styles', ['build-styles-files', 'build-style-editor'], ->
   _cssHash = '_' + crypto.createHash('md5').update(fs.readFileSync("#{outputFolder}/css/application.css")).digest('hex').substr(0, 6)
 
   gulp.src "#{outputFolder}/css/application.css"
@@ -90,3 +90,8 @@ gulp.task 'build-styles-files', ->
     .pipe stylus({use: [nib()], 'include css': true, url: {name: 'url', limit: 32768, paths: [outputFolder + '/img']}})
     .pipe(csso(false))
     .pipe gulp.dest "#{outputFolder}/css"
+
+gulp.task 'build-style-editor', ->
+  gulp.src './src/css/editor-style.styl'
+    .pipe stylus({use: [nib()], 'include css': true, url: {name: 'url', limit: 32768, paths: [outputFolder + '/img']}})
+    .pipe gulp.dest "#{outputFolder}"

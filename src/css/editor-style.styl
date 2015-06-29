@@ -1,0 +1,25 @@
+@import 'nib'
+@import 'variables'
+global-reset()
+
+// Modules
+@import 'modules/mixins'
+
+html, body
+  background $whiteGray
+  font-family $baseFontFamily
+  font-size $baseFontSize
+  line-height $baseLineHeight
+  margin 0
+  padding 0
+
+a
+  text-decoration none
+  color $blue
+  &:visited
+    color $blueDark
+
+a:hover
+  text-decoration underline
+
+@import 'modules/article'

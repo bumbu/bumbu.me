@@ -14,3 +14,4 @@ node_modules
 /app/wp-content/themes/bumbu/js/application.js
 /app/wp-content/themes/bumbu/css/application*.css
 /app/wp-content/themes/bumbu/header.php
+/app/wp-content/themes/bumbu/editor-style.css
