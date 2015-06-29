@@ -80,15 +80,34 @@
     border-left: 3px solid $blue;
     font-style: italic;
 
+  code
+    color $redDark
+    border 1px solid #e1e1e8
+    background #f7f7f9
+    border-radius 3px
+    font-family $codeFontFamily
+    font-size $codeFontSize - 1px
+    padding 1px 2px
+
 
   .prettyprint
     font-size: $codeFontSize
     font-family $codeFontFamily
-    margin: 6px 0 12px;
+    margin 6px 0 12px
+    padding 0 6px 2px
+    overflow auto
+
+    &.linenums
+      padding 0
 
     ol
-      padding-left: 6px;
+      padding-left: 6px
 
+    code
+      font-size: $codeFontSize
+      border 0
+      background none
+      padding 0
 
   p + .prettyprint
     margin-top: -9px;
