@@ -35,10 +35,10 @@ jQuery ->
       category = categoriesObject[id]
 
       # Deselect previous menu item
-      $menuPrimary.children('.active').removeClass('current-menu-item active')
+      $menuPrimary.children('.active').removeClass('active')
 
       # Select new item
-      $menuPrimary.find("a[data-id='#{id}']").parent().addClass('current-menu-item active')
+      $menuPrimary.find("a[data-id='#{id}']").parent().addClass('active')
 
       # Set sidebar title
       $sidebarSecondary.find('.header h4').text(category.title)
