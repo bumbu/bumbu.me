@@ -9,6 +9,10 @@ csso = require('gulp-csso')
 chalk = require('chalk')
 dateformat = require('dateformat')
 plumber = require('gulp-plumber')
+crypto = require('crypto')
+fs = require('fs')
+rename = require('gulp-rename')
+preprocess = require('gulp-preprocess')
 
 outputFolder = './app/wp-content/themes/bumbu'
 
@@ -38,6 +42,12 @@ gulp.task 'watch', ['build'], ->
   watcher_script.on 'change', (e)->
     log e.type + ' ' + chalk.yellow(filePathShort(e.path))
 
+  gulp.src './src/php/*.php'
+    .pipe preprocess
+      context:
+        cssHash: ''
+    .pipe gulp.dest "#{outputFolder}/"
+
 # Development
 # #########################
 
@@ -52,7 +62,11 @@ gulp.task 'development-styles', ->
 # #########################
 
 gulp.task 'build', ['build-scripts', 'build-styles'], ->
-  1
+  gulp.src './src/php/*.php'
+    .pipe preprocess
+      context:
+        cssHash: _cssHash
+    .pipe gulp.dest "#{outputFolder}/"
 
 gulp.task 'build-scripts', ->
   # TODO append hash to file name
@@ -62,8 +76,14 @@ gulp.task 'build-scripts', ->
     .pipe(gulp.dest("#{outputFolder}/js/"))
     .pipe livereload auto: false
 
+_cssHash = ''
 gulp.task 'build-styles', ['build-styles-files'], ->
-  1 # TODO append hash to file name
+  _cssHash = '_' + crypto.createHash('md5').update(fs.readFileSync("#{outputFolder}/css/application.css")).digest('hex').substr(0, 6)
+
+  gulp.src "#{outputFolder}/css/application.css"
+    .pipe rename
+      suffix: _cssHash
+    .pipe gulp.dest "#{outputFolder}/css/"
 
 gulp.task 'build-styles-files', ->
   gulp.src './src/css/application.styl'

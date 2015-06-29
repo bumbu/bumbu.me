@@ -21,7 +21,7 @@
 
 <?php wp_head(); ?>
 <link href='http://fonts.googleapis.com/css?family=Lato:100,300|Droid+Serif:400,700,400italic&subset=latin,cyrillic,latin-ext' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_url' ); ?>/css/application.css" />
+<link rel="stylesheet" type="text/css" media="all" href="<?php bloginfo( 'template_url' ); ?>/css/application/* @echo cssHash */.css" />
 
 </head>
 
