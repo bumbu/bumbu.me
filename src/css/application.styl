@@ -6,20 +6,24 @@ global-reset()
 @import 'modules/mixins'
 @import 'modules/icons'
 
-html, body{
-  background: $whiteGray;
-  min-height: 400px;
-  height: 100%;
-  font-family: $baseFontFamily;
-  font-size: $baseFontSize;
-  line-height: $baseLineHeight;
-  margin: 0;
-  padding: 0;
-}
+html, body
+  background $whiteGray
+  min-height 400px
+  height 100%
+  font-family $baseFontFamily
+  font-size $baseFontSize
+  line-height $baseLineHeight
+  margin 0
+  padding 0
 
-a{
-  text-decoration: none;
-}
+a
+  text-decoration none
+  color $blue
+  &:visited
+    color $blueDark
+
+a:hover
+  text-decoration underline
 
 @import 'modules/article'
 @import 'modules/sidebar'
