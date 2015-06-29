@@ -70,19 +70,21 @@
 						$url = $menu_item->url;
 						$li_class = join(' ', $menu_item->classes);
 						$a_class = 'icon icon-'.strtolower($menu_item->title);
+						$id = $menu_item->object_id;
 
-						$menu_list .= '<li class="' . $li_class . '"><a class="' . $a_class . '" href="' . $url . '"></a></li>';
+						$menu_list .= '<li class="' . $li_class . '"><a class="' . $a_class . '" data-id="'. $id .'" href="' . $url . '"></a></li>';
 					}
 					$menu_list .= '</ul>';
 				}
 				echo $menu_list;
 			?>
 		</div>
-		<div class="sidebar-secondary">
+		<div class="sidebar-secondary" id="sidebar-secondary">
 			<?php if ( ! dynamic_sidebar( 'sidebar-panel-first' ) ) : ?>
 				<div class="item header">
 					<h4><?php echo $category_active_title; ?></h4>
 				</div>
+				<div class="items">
 				<?php
 				$_posts = wp_get_recent_posts(array(
 					'numberposts' => 50
@@ -105,6 +107,45 @@
 
 				}
 				?>
+				</div><!-- .items -->
 			<?php endif; // end sidebar widget area ?>
 		</div>
 	</div>
+<?php
+
+// Get categories
+$categories = array();
+foreach ($menu_items as $key => $menu_item) {
+	if ($menu_item->object == 'category') {
+		$categories[] = array(
+			'id' => $menu_item->object_id
+		, 'title' => $menu_item->title
+		, 'posts' => array()
+		, 'is_active' => $menu_item->object_id == $category_active
+		);
+	}
+}
+
+// Mapper function
+function postData($post) {
+	return array(
+		'ID' => $post['ID']
+	, 'title' => $post['post_title']
+	, 'url' => get_permalink($post['ID'])
+	, 'is_active' => $post['ID'] == get_the_ID()
+	);
+}
+
+// For each category get articles
+foreach ($categories as $category_id => &$category) {
+	$category['posts'] = array_map(postData, wp_get_recent_posts(array(
+		'numberposts' => 50
+	,	'category' => $category['id']
+	,	'post_status' => 'publish'
+	)));
+}
+
+?>
+<script>
+	var CATEGORIES = '<?php echo str_replace("'", "\'", json_encode($categories)); ?>';
+</script>
