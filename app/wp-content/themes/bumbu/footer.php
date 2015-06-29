@@ -10,6 +10,7 @@
 
 </div><!-- #page -->
 
+<?php get_sidebar('panel'); ?>
 <?php wp_footer(); ?>
 </div><!-- .layout -->
 
