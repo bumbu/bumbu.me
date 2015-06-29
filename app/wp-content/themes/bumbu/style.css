@@ -71,9 +71,6 @@ and Blueprint http://www.blueprintcss.org/
 
 .sticky {
 }
-.hentry {
-	margin: 0 0 1.5em;
-}
 .byline {
 	display: none;
 }
@@ -140,28 +137,4 @@ embed,
 iframe,
 object {
 	max-width: 100%;
-}
-
-
-/* =Comments
------------------------------------------------ */
-
-.comment-content a {
-	word-wrap: break-word;
-}
-.bypostauthor {
-}
-
-/* =Infinite Scroll
------------------------------------------------ */
-
-/* Globally hidden elements when Infinite Scroll is supported and in use. */
-.infinite-scroll .navigation-paging, /* Older / Newer Posts Navigation (always hidden) */
-.infinite-scroll.neverending .site-footer { /* Theme Footer (when set to scrolling) */
-	display: none;
-}
-
-/* When Infinite Scroll has reached its end we need to re-display elements that were hidden (via .neverending) before */
-.infinity-end.neverending .site-footer {
-	display: block;
 }

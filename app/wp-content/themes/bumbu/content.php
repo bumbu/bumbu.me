@@ -10,4 +10,6 @@
 	<div class="post-content">
 		<?php the_content(); ?>
 	</div>
+
+  <div class="post-date"><?php the_time( get_option( 'date_format' ) );?></div>
 </div>
