@@ -100,10 +100,32 @@
       .title
         color: $grayDark
 
+    &.alert
+      font-size $baseFontSize
+      background $whiteGray
+      margin 14px 14px
+      border 1px solid $gray
+
+      &:hover
+        background none
+        cursor default
+
     .title
       color: $gray;
       text-decoration: none;
 
+  .sidebar-search-form
+    margin 0
+    padding 0
+    border 0
+    height $firstSidebarWidth
+
+    .sidebar-search-input
+      font-size $baseFontSize * 1.2
+      background none
+      outline none
+      border 0
+      padding 14px 0 9px
 
 @media (max-width: 767px)
   body.sidebar-open

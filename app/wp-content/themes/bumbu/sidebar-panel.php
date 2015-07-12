@@ -8,12 +8,15 @@
 	<div class="sidebar">
 		<a href="#" class="sidebar-trigger" id="sidebar-trigger"><span class="lines"></span></a>
 		<div class="sidebar-primary" id="sidebar-main">
-			<a href="<?php echo site_url(); ?>" class="logo"><i class="icon icon-bumbu" id="icon-logo"></i></a>
-			<?php if ( ! dynamic_sidebar( 'sidebar-panel-main' ) ) : ?>
-			<?php endif; // end sidebar widget area ?>
-
+		<?php if ( ! dynamic_sidebar( 'sidebar-panel-main' ) ) : ?>
+		<?php endif; // end sidebar widget area ?>
 			<?php
 				$menu_name = 'primary';
+				$menu_list = '<ul id="menu-' . $menu_name . '" class="menu">';
+
+				$menu_list .= '<li class=""><a class="icon icon-search" id="sidebar-search" href="' . get_search_link() . '"></a></li>';
+
+
 				$category_active = 0;
 				$category_active_title = 'bumbu';
 				$category_first = 0;
@@ -25,8 +28,6 @@
 
 					$menu_items = wp_get_nav_menu_items($menu->term_id);
 					_wp_menu_item_classes_by_context($menu_items);
-
-					$menu_list = '<ul id="menu-' . $menu_name . '" class="menu">';
 
 					// Search for active category
 					foreach ( $menu_items as $key => $menu_item ) {
@@ -83,6 +84,10 @@
 			<?php if ( ! dynamic_sidebar( 'sidebar-panel-first' ) ) : ?>
 				<div class="item header">
 					<h4><?php echo $category_active_title; ?></h4>
+					<form id="sidebar-search-form" class="sidebar-search-form" style="display: none;" action="<?php echo site_url();?>/wp-admin/admin-ajax.php?action=sidebar_search">
+						<input type="text" class="sidebar-search-input">
+						<button type="submit" class="hide"></button>
+					</form>
 				</div>
 				<div class="items">
 				<?php

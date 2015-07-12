@@ -161,3 +161,25 @@ function my_theme_add_editor_styles() {
     add_editor_style();
 }
 add_action( 'admin_init', 'my_theme_add_editor_styles' );
+
+
+function sidebar_search() {
+	$query = $_GET['q'];
+
+	$posts = array_map(function($post){
+		return array(
+			'title' => $post->post_title
+		, 'url' => get_permalink($post->ID)
+		);
+	}, get_posts(array(
+		's' => $query
+	, 'numberposts' => 14
+	, 'post_type' => 'post'
+	, 'post_status' => 'publish'
+	)));
+
+	echo json_encode($posts);
+	exit();
+}
+add_action( 'wp_ajax_nopriv_sidebar_search', 'sidebar_search' );
+add_action( 'wp_ajax_sidebar_search', 'sidebar_search' );
