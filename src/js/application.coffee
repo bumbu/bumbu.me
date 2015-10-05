@@ -12,6 +12,15 @@ jQuery ->
   $sidebarSearchForm = $('#sidebar-search-form')
   $sidebarSearchInput = $sidebarSearchForm.find('input')
 
+  setCookie = (name, value, days) ->
+    if days
+      date = new Date()
+      date.setTime date.getTime() + (days * 24 * 60 * 60 * 1000)
+      expires = "; expires=" + date.toGMTString()
+    else
+      expires = ""
+    document.cookie = name + "=" + value + expires + "; path=/"
+
   $('#sidebar-trigger').click (ev)->
     ev.preventDefault()
 
@@ -31,10 +40,13 @@ jQuery ->
       categoriesObject[category.id] = category
 
   currentActiveId = $menuPrimary.children('.active').children('a').data('id') || 0
+  setCookie('last-active-category', currentActiveId) # Update current category id
 
   # Enable dynamic menu only if currently selected item is a category
   if categoriesObject? and currentActiveId of categoriesObject
     activateCategory = (id)->
+      setCookie('last-active-category', id) # set new current category id
+
       currentId = $menuPrimary.children('.active').children('a').data('id') || 0
       return false if currentId is id
 

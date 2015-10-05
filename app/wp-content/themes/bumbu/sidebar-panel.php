@@ -16,7 +16,7 @@
 
 				$menu_list .= '<li class=""><a class="icon icon-search" id="sidebar-search" href="' . get_search_link() . '"></a></li>';
 
-
+				$last_category_active = isset($_COOKIE['last-active-category']) ? (int) $_COOKIE['last-active-category'] : 0;
 				$category_active = 0;
 				$category_active_title = 'bumbu';
 				$category_first = 0;
@@ -49,13 +49,21 @@
 						$category_active = $category_post > 0 ? $category_post : 0;
 					}
 
+					$categories = get_the_category(get_the_ID());
 					if($category_active === 0){
-						$categories = get_the_category(get_the_ID());
 						foreach ($categories as $category) {
 							if(in_array($category->term_id, $visible_categories)){
 								$category_active = $category->term_id;
 								break;
 							}
+						}
+					}
+
+					// Last check for previous category
+					foreach ($categories as $category) {
+						if($last_category_active == $category->term_id && in_array($category->term_id, $visible_categories)){
+							$category_active = $category->term_id;
+							break;
 						}
 					}
 
