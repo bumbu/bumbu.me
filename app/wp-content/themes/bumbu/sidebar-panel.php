@@ -5,8 +5,8 @@
  * @package bumbu
  */
 ?>
+	<a href="#" class="sidebar-trigger" id="sidebar-trigger"><span class="lines"></span></a>
 	<div class="sidebar">
-		<a href="#" class="sidebar-trigger" id="sidebar-trigger"><span class="lines"></span></a>
 		<div class="sidebar-primary" id="sidebar-main">
 		<?php if ( ! dynamic_sidebar( 'sidebar-panel-main' ) ) : ?>
 		<?php endif; // end sidebar widget area ?>
