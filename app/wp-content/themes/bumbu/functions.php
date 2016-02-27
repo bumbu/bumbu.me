@@ -183,3 +183,7 @@ function sidebar_search() {
 }
 add_action( 'wp_ajax_nopriv_sidebar_search', 'sidebar_search' );
 add_action( 'wp_ajax_sidebar_search', 'sidebar_search' );
+
+// Remove emojies scripts
+remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
+remove_action( 'wp_print_styles', 'print_emoji_styles' );
