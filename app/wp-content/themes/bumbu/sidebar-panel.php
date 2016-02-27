@@ -158,7 +158,11 @@ foreach ($categories as $category_id => &$category) {
 	)));
 }
 
+$json = json_encode($categories);
+$json = str_replace("'", "\'", $json);
+$json = str_replace('"', '\"', $json);
+
 ?>
 <script>
-	var CATEGORIES = '<?php echo str_replace("'", "\'", json_encode($categories)); ?>';
+	var CATEGORIES = '<?php echo $json; ?>';
 </script>
