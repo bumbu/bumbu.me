@@ -29,6 +29,8 @@ filePathShort = (filePath)->
 # Watch
 # #########################
 
+gulp.task 'default', ['watch']
+
 gulp.task 'watch', ['build'], ->
   livereload.listen({auto: true})
 
