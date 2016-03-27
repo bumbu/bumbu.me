@@ -12,6 +12,8 @@ node_modules
 /app/wp-content/themes/*
 !/app/wp-content/themes/bumbu
 /app/wp-content/themes/bumbu/js/application.js
+/app/wp-content/themes/bumbu/js/highlighter.js
 /app/wp-content/themes/bumbu/css/application*.css
+/app/wp-content/themes/bumbu/css/highlighter.css
 /app/wp-content/themes/bumbu/header.php
 /app/wp-content/themes/bumbu/editor-style.css

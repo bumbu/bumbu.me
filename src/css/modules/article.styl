@@ -87,9 +87,26 @@
     background #f7f7f9
     border-radius 3px
     font-family $codeFontFamily
-    font-size $codeFontSize - 1px
-    padding 1px 2px
+    font-size $codeFontSize
+    padding 0px 3px 1px
 
+  pre
+    font-family $codeFontFamily
+    font-size $codeFontSize
+
+    code
+      backround #f5f2f0
+      padding: 0.5em 0
+      display block;
+      border 0
+      border-radius 0
+
+    code[class*='language-']
+      color #000
+      border 0
+      background none
+      border-radius 0
+      padding 0
 
   .prettyprint
     font-size: $codeFontSize

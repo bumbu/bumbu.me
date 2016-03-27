@@ -16,6 +16,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="<?php bloginfo( 'template_url' ); ?>/js/application.js?ver=1"></script>
+<script src="<?php bloginfo( 'template_url' ); ?>/js/highlighter.js?ver=1"></script>
 <script type="text/javascript">
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
