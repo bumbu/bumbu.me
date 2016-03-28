@@ -59,9 +59,9 @@ marked.setOptions({
   renderer: renderer,
   gfm: true,
   tables: true,
-  breaks: false,
+  breaks: true,
   pedantic: false,
-  sanitize: true,
+  sanitize: false,
   smartLists: true,
   smartypants: false,
   langPrefix: 'language-'
