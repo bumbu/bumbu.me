@@ -104,6 +104,7 @@ highlighterFolder = './node_modules/prismjs/'
 highlighterFilesJs = [
   highlighterFolder + 'prism.js'
   # Langs
+  highlighterFolder + 'components/prism-bash.js'
   highlighterFolder + 'components/prism-clike.js'
   highlighterFolder + 'components/prism-coffeescript.js'
   highlighterFolder + 'components/prism-c.js'
