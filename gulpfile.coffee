@@ -129,6 +129,7 @@ highlighterFilesJs = [
   highlighterFolder + 'components/prism-scss.js'
   highlighterFolder + 'components/prism-sql.js'
   highlighterFolder + 'components/prism-stylus.js'
+  highlighterFolder + 'components/prism-swift.js'
   highlighterFolder + 'components/prism-typescript.js'
   highlighterFolder + 'components/prism-yaml.js'
   # Plugins
